@@ -1,0 +1,13 @@
+  {{base_url}}    
+ 
+ {% set theme_url = drupal_get_path('theme','barcel') %}
+ {% set theme_base = base_url~'/'~theme_url~'/' %}
+
+
+<section id="error-section">
+	<div class="container text-center">
+		<img src="{{ theme_base }}images/logo_bolsa_trapecio.png" class="img-responsive">
+
+		<a href="{{ base_url }}" class="btn">Ir al inicio</a>
+	</div>
+</section>

@@ -1,0 +1,764 @@
+{% set theme_url = drupal_get_path('theme','barcel') %}
+	{% set theme_base = base_url~'/'~theme_url~'/' %}
+
+  {% set nid = view.render_field('nid',0) %}
+  {% set node = node_load(nid) %} 
+
+  {% set steps = node.field_titulo_step'und'|length %}
+  {% set video_id = node.field_video_promo'und'.0.video_id %}
+
+  {% set image_bkg = file_load(node.field_background_desktop'und'.0.fid) %}
+  {% set image_bkg = file_create_url(image_bkg.uri %})	          
+  {% set image_bkg_mb = file_load(node.field_background_mobile'und'.0.fid) %}
+  {% set image_bkg_mb = file_create_url(image_bkg_mb.uri %})
+
+  {% set image_logo = file_load(node.field_logo_promo'und'.0.fid) %}
+  {% set image_logo = file_create_url(image_logo.uri %})
+
+
+<section id="home-section" class="section-container">
+	<div class="banner-home-container">
+		<div class="row">
+			<div class="col-xs-12 text-center">
+				<img src="{{ image_logo }}" class="logo-promo img-responsive" />
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="promo-bkg hidden-xs hidde-sm" style="background-image: url('{{ image_bkg }}');">
+					<div class="promo-content">
+						<div class="row">
+							<div class="col-xs-12 col-md-7">
+								<div class="embed-responsive embed-responsive-16by9">
+									<iframe class="embed-responsive-item" src="//www.youtube.com/embed/{{ video_id }}" allowfullscreen></iframe>
+								</div>
+							</div>
+							<div class="col-xs-12 col-md-4 col-steps">
+								{% fori in 0 ..steps %}
+									<div class="media">
+										<div class="media-left">
+											<span class="media-number">{{ i+1 }}</span>
+										</div> 
+										<div class="media-body">
+											<h4 class="media-heading">{{ node.field_titulo_step'und'[i].value }}</h4>
+											<p class="media-txt">{{ node.field_texto_step'und'[i].value }}</p>
+										</div>
+									</div>
+								{% endfor %}
+							</div>							
+						</div>
+					</div>
+				</div>
+				<div class="promo-bkg hidden-md hidden-lg" style="background-image: url('{{ image_bkg_mb }}');">
+					<div class="promo-content">
+						<div class="row">
+							<div class="col-xs-12 col-md-8">
+								<div class="embed-responsive embed-responsive-16by9">
+									<iframe class="embed-responsive-item" src="//www.youtube.com/embed/{{ video_id }}" allowfullscreen></iframe>
+								</div>
+							</div>
+							<div class="col-xs-12 col-md-4 col-steps">
+								{% fori in 0 ..steps %}
+									<div class="media">
+										<div class="media-left">
+											<span class="media-number">{{ i+1 }}</span>
+										</div> 
+										<div class="media-body">
+											<h4 class="media-heading">{{ node.field_titulo_step'und'[i].value }}</h4>
+											<p class="media-txt">{{ node.field_texto_step'und'[i].value }}</p>
+										</div>
+									</div>
+								{% endfor %}
+							</div>							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Remodal Legales -->
+<div id="remodal-legales" class="remodal" data-remodal-id="legales">
+ <button data-remodal-action="close" class="remodal-close"></button>
+ <h1>Términos y Condiciones de la Promoción: <br> <small>“LA PROMO BARCEL, TODOS GANAN, NADIE PIERDE”</small></h1>
+ <div class="legales-container">
+ 	<div class="content text-justify">
+ 		<p>
+ 		  Con fundamento en lo dispuesto por la Ley Federal de Protección al
+ 		  Consumidor y la NOM-028-SCFI-2007, se hace pública la presente promoción
+ 		  denominada “BARCEL, TODOS GANAN, NADIE PIERDE” misma que se regirá al tenor
+ 		  de las siguientes bases, términos y condiciones. Lo cual implica, por parte
+ 		  del participante, la lectura total, entendimiento y aceptación de las
+ 		  presentes bases de participación y de los requisitos y condiciones
+ 		  establecidos por la organizadora.
+ 		</p>
+ 		<p>
+ 		  CERO CATORCE PUBLICIDAD S.A.P.I. DE C.V. en adelante “EL ORGANIZADOR”, con
+ 		  domicilio ubicado en EUCKEN # 8, INT. 201, COL. NUEVA ANZURES, DEL. MIGUEL
+ 		  HIDALGO, CIUDAD DE MÉXICO, C.P. 11590, convoca una promoción como objeto de
+ 		  prestación de sus servicios a BARCEL, S.A. de C.V. en adelante “LA
+ 		  EMPRESA”.
+ 		</p>
+ 		<p>
+ 		  La Promoción está sujeta a los términos y condiciones que se establecen a
+ 		  continuación.
+ 		</p>
+ 		<p>
+ 		  Para participar en la promoción “BARCEL, TODOS GANAN, NADIE PIERDE” (en
+ 		  adelante la “PROMOCIÓN”) se deberá dar lectura íntegra de los siguientes
+ 		  Términos y Condiciones y cumplir totalmente con las bases, así como también
+ 		  con las reglas de participación (en adelante los “TÉRMINOS”) aquí
+ 		  establecidos, lo cual implica el conocimiento y aceptación incondicional y
+ 		  expresa de los mismos.
+ 		</p>
+ 		<p>
+ 		  Cualquier violación a los Términos, los procedimientos y/o sistemas
+ 		  establecidos para la realización de esta Promoción, implica la inmediata
+ 		  exclusión y/o la revocación de los premios en caso de resultar ganador.
+ 		</p>
+ 		<p>
+ 		  En esta Promoción no interviene el azar, la suerte, la combinación de
+ 		  números o la aleatoriedad.
+ 		</p>
+ 		<p>
+ 		  1) RESPONSABLE DE LA PROMOCIÓN
+ 		</p>
+ 		<p>
+ 		  Es la EMPRESA quien acepta y reconoce ser único responsable de esta
+ 		  Promoción.
+ 		</p>
+ 		<p>
+ 		  2) RESPONSABLE DE LA EJECUCIÓN DE LA PROMOCIÓN
+ 		</p>
+ 		<p>
+ 		  Es el ORGANIZADOR, quien acepta y reconoce ser único responsable para
+ 		  seleccionar y contactar a los ganadores de esta promoción.
+ 		</p>
+ 		<p>
+ 		  3) REPONSABLE DE LA ENTREGA Y GARANTÍA DE PREMIOS FÍSICOS
+ 		</p>
+ 		<p>
+ 		  Es GV Muebles SA de CV quien acepta y reconoce ser único responsable de la
+ 		  entrega y garantía de premios físicos.
+ 		</p>
+ 		<p>
+ 		  4) VIGENCIA DE LA PROMOCIÓN
+ 		</p>
+ 		<p>
+ 		  <a name="_Hlk30437510">Del 01 de febrero hasta el 31 de marzo 2020.</a>
+ 		</p>
+ 		<p>
+ 		  5) ÁMBITO TERRITORIAL DEL PROGRAMA
+ 		</p>
+ 		<p>
+ 		  Estados Unidos Mexicanos.
+ 		</p>
+ 		<p>
+ 		  6) DETALLES DE LA PROMOCIÓN:
+ 		</p>
+ 		<p>
+ 		  <strong>A) </strong>
+ 		  <strong>PARTICIPANTES</strong>
+ 		  : Podrán participar en la PROMOCIÓN, todas aquellas personas que reúnan
+ 		  todos los siguientes requisitos indispensables:
+ 		</p>
+ 		<p>
+ 		  1. Residir en los Estados Unidos Mexicanos.
+ 		</p>
+ 		<p>
+ 		  2. Ser mayores de 18 años a la fecha de inicio de la PROMOCIÓN o tener la
+ 		  autorización expresa de sus tutores y/o padres de familia.
+ 		</p>
+ 		<p>
+ 		  3. Aceptar los presentes TÉRMINOS.
+ 		</p>
+ 		<p>
+ 		  4. Leer nuestro Aviso de Privacidad.
+ 		</p>
+ 		<p>
+ 		  5. Ser persona física (domiciliada en la República Mexicana).
+ 		</p>
+ 		<p>
+ 		  6. Que realice la compra de los productos participantes de BARCEL.
+ 		</p>
+ 		<p>
+ 		  La participación de los “PARTICIPANTES” en esta “PROMOCIÓN” implica la
+ 		  aceptación de los presentes “TÉRMINOS” y del aviso de privacidad disponible
+ 		  para consulta en:
+ 		  <a href="http://www.todosgananconbarcel.com">
+ 		    www.todosgananconbarcel.com
+ 		  </a>
+ 		</p>
+ 		<p>
+ 		  Quedará inmediatamente descalificado aquel registro de participación que, a
+ 		  juicio del ORGANIZADOR, sea falso, contrario a las disposiciones contenidas
+ 		  en estos TÉRMINOS o contrario a la ley.
+ 		</p>
+ 		<p>
+ 		  Sólo las personas que cumplan con la totalidad de los requisitos
+ 		  anteriormente descritos podrán ser consideradas como PARTICIPANTES de la
+ 		  PROMOCIÓN.
+ 		</p>
+ 		<p>
+ 		  <a name="_Hlk508643098">
+ 		    <strong>NO PODRÁN PARTICIPAR O SERÁN DESCALIFICADOS </strong>
+ 		  </a>
+ 		</p>
+ 		<p>
+ 		  1. Empleados o funcionarios de “EL ORGANIZADOR”, “LA EMPRESA”, o empresas
+ 		  asociadas de forma alguna (directa o indirecta) a éstas.
+ 		</p>
+ 		<p>
+ 		  2. Los familiares hasta el tercer grado, cónyuges, concubinos,
+ 		  concubinarias o similares de cualquier de los anteriores.
+ 		</p>
+ 		<p>
+ 		  3. Empleados de los puntos de venta participantes.
+ 		</p>
+ 		<p>
+ 		  4. Los empleados o funcionarios de los proveedores y/o colaboradores de “EL
+ 		  ORGANIZADOR” o “LA EMPRESA” involucrados en la planeación, desarrollo u
+ 		  organización de la Promoción.
+ 		</p>
+ 		<p>
+ 		  5. HACKERS (término utilizado para referirse a personas con grandes
+ 		  conocimientos en informática y telecomunicaciones que son utilizados con
+ 		  objetivos personales, el cual puede o no ser maligno o ilegal).
+ 		</p>
+ 		<p>
+ 		  6. CAZA PROMOCIONES (definido como todo aquel PARTICIPANTE que actúa de
+ 		  forma desleal frente a los otros PARTICIPANTES para obtener el beneficio de
+ 		  la PROMOCIÓN utilizando mecanismos poco éticos, morales o incluso ilegales,
+ 		  como crear perfiles falsos para aumentar las posibilidades de ganar).
+ 		</p>
+ 		<p>
+ 		  7. Cualquier intento o ejecución de aplicación de programas o sistemas que
+ 		  pretendan atacar o vulnerar la PROMOCIÓN, podrá ser perseguido con las
+ 		  acciones legales pertinentes que a criterio del ORGANIZADOR sean
+ 		  suficientes y acarrea la inmediata descalificación y anulación de
+ 		  participación del PARTICIPANTE que incurra en tal conducta.
+ 		</p>
+ 		<p>
+ 		  8. Toda decisión del ORGANIZADOR y LA EMPRESA será inapelable, definitiva y
+ 		  sin posibilidad de reconsideración.
+ 		</p>
+ 		<p>
+ 		  9. Participantes que intenten registrar más de una vez un mismo código de
+ 		  empaque.
+ 		</p>
+ 		<p>
+ 		  <strong>B) </strong>
+ 		  <strong>PRODUCTOS PARTICIPANTES </strong>
+ 		</p>
+ 		<p class="text-center">
+ 		  <img src="{{ theme_base }}images/promo/legales/productos_participantes.png" class="img-responsive">
+ 		</p>
+ 		<p>
+ 		  <strong>C) </strong>
+ 		  <strong>MECÁNICA DE LA PROMOCIÓN </strong>
+ 		</p>
+ 		<p>
+ 		  <a name="_Hlk30436813">
+ 		    Todos los “PARTICIPANTES” que, durante la vigencia de la “PROMOCIÓN”,
+ 		    realicen la compra de los productos participantes, deberán realizar la
+ 		    siguiente mecánica:
+ 		  </a>
+ 		</p>
+ 		<p>
+ 		  <strong>1</strong>
+ 		  .- Buscar el código único marcado dentro del empaque de los productos
+ 		  participantes.
+ 		</p>
+ 		<p>
+ 		  <strong>2.- </strong>
+ 		  Enviar vía SMS la palabra “BARCEL” seguido de un “espacio” y el código
+ 		  encontrado dentro del empaque al Número 77477.
+ 		</p>
+ 		<p>
+ 		  Ejemplo: BARCEL ZDFR1234M
+ 		</p>
+ 		<p>
+ 		  <strong>3.</strong>
+ 		  -El participante recibirá un SMS de forma automática con la respuesta del
+ 		  premio que le fue asignado de acuerdo a su número de registro, en adelante
+ 		  “REGISTRO GANADOR”, que será determinado por una lista de números de
+ 		  registro y tipo de premio previamente realizada por el “ORGANIZADOR” y “LA
+ 		  EMPRESA”.
+ 		</p>
+ 		<p>
+ 		  4.-El participante recibirá dentro del mismo SMS las indicaciones de como
+ 		  reclamar su premio.<a name="_Hlk526950180"></a>
+ 		</p>
+ 		<p>
+ 		  “EL ORGANIZADOR” y “LA EMPRESA” no son responsables de que el usuario no
+ 		  pueda participar en esta campaña por temas asociados a su compañía
+ 		  telefónica que no le permitan enviar o recibir mensajes de la marcación
+ 		  corta antes mencionadas. Un código de empaque es válido por una única
+ 		  ocasión. El premio será entregado al primer participante que haya
+ 		  comprobado la autenticidad del código con el que participo entregando el
+ 		  empaque original que contenga el código registrado en el registro ganador.
+ 		  Ver REGISTRO GANADOR en Términos y Condiciones en
+ 		  <a href="http://www.todosgananconbarcel.com">
+ 		    www.todosgananconbarcel.com
+ 		  </a>
+ 		</p>
+ 		<p>
+ 		  <strong>D) </strong>
+ 		  <strong>ESTABLECIMIENTOS PARTICIANTES</strong>
+ 		</p>
+ 		<p>
+ 		  <a name="_Hlk30437584">
+ 		    Canal Autoservicio, Tienditas y Conveniencia a nivel nacional.
+ 		  </a>
+ 		</p>
+ 		<p>
+ 		  <strong>E) </strong>
+ 		  <strong>NOTIFICACIÓN DE GANADORES Y ENTREGA DE PREMIOS</strong>
+ 		</p>
+ 		<p>
+ 		  <a name="_Hlk30437842">
+ 		    Una vez definido el premio de acuerdo al “REGISTRO GANADOR” el
+ 		    “ORGANIZADOR” será el responsable de realizar la entrega de los premios
+ 		    digitales de la “PROMOCIÓN” vía SMS, donde se le indicará la forma y
+ 		    vigencia de canje.
+ 		  </a>
+ 		</p>
+ 		<p>
+ 		  Los premios físicos serán entregados al domicilio del participante por
+ 		  medio de una empresa de logística proporcionada por la EMPRESA en un
+ 		  periodo máximo de 15 días hábiles una vez enviado sus datos completos y
+ 		  fotografía de empaque con el código ganador.
+ 		</p>
+ 		<p>
+ 		  <strong>F) </strong>
+ 		  <strong>PREMIOS </strong> 		  
+ 		</p>
+ 		<p>
+ 		  Las marcas y modelos estarán sujetos a disponibilidad, el “ORGANIZADOR” ni
+ 		  “LA EMPRESA” garantizan un mismo modelo/marca durante la vigencia de la
+ 		  PROMOCIÓN.
+ 		</p>
+ 		<p>
+ 		  Limitado a 234,218,900 (Doscientos treinta y cuatro millones doscientos
+ 		  dieciocho mil novecientos) de códigos marcados en empaques en esta
+ 		  promoción.
+ 		</p>
+ 		<p>
+ 			<img src="{{ theme_base }}images/promo/legales/establecimientos_participantes.png" class="img-responsive">
+ 		</p>
+ 		<p>
+ 		  <strong>G) </strong>
+ 		  <strong>RESTRICCIONES DE PREMIOS DIGITALES</strong>
+ 		  .
+ 		</p>
+ 		<p>
+ 		  <strong>Beneficios y Descuentos</strong>
+ 		</p>
+ 		<p>
+ 		  Válidos únicamente en los establecimientos seleccionados y durante la
+ 		  vigencia señalada en el cupón. Es indispensable que el usuario siga las
+ 		  instrucciones y los términos y condiciones de cada cupón para el canje del
+ 		  mismo. No aplican en otras promociones. El “ORGANIZADOR” y la “EMPRESA” no
+ 		  garantizan disponibilidad a nivel nacional, queda sujeto a la cobertura de
+ 		  cada establecimiento.
+ 		</p>
+ 		<p>
+ 		  <strong>QW</strong>
+ 		</p>
+ 		<p>
+ 		  <strong>Boleto Cinépolis Cine 2x1 sala tradicional</strong>
+ 		</p>
+ 		<p>
+ 		  Haz válido tu cupón presentándolo directamente en la taquilla de
+ 		  Cinépolis®. Válidos del 01 de febrero al 15 de abril 2020. Los boletos
+ 		  solamente son válidos en taquillas Cinépolis® de los conjuntos
+ 		  tradicionales y Xtreme Cinemas® de la República Mexicana. Válido para
+ 		  funciones 2D. El 2x1 aplica sobre el precio vigente más alto de lunes a
+ 		  domingo y el correspondiente a formato 2D. No aplica en funciones 3D, Macro
+ 		  XE®, 4Dx®, Cinemapark®, Cinépolis VIP® ni Cinépolis IMAX®.
+ 		</p>
+ 		<p>
+ 		  <strong>Boleto Cinépolis entrada sala tradicional</strong>
+ 		</p>
+ 		<p>
+ 		  1. Boleto de cine tradicional Válido de Lunes a Domingo. Has válida tu
+ 		  entrada presentando tus boletos en cualquier sala tradicional Cinépolis a
+ 		  nivel nacional. / Válido del 01 de febrero al 30 de abril 2020 / No válido
+ 		  en Cinépolis VIP, IMAX, Funciones 3D, 4Dx, Macro XE, Cinépolis Plus, Sala
+ 		  Junior o Cinema Park. / El folio debe presentarse completo en la taquilla
+ 		  para que pueda ser reconocido por el sistema. / El beneficio lo posee el
+ 		  portador del folio y es válido una sola vez. / El folio no aplica en días
+ 		  de descanso obligatorio señalados en la Ley Federal del Trabajo. No aplica
+ 		  con otras promociones. / No aplica en premieres, funciones especiales o
+ 		  contenido alternativo. / No aplica en reservaciones por Cineticket o venta
+ 		  avanzada. Sujeto a disponibilidad o cupo de la película. / Por seguridad de
+ 		  la empresa, Cinépolis se reserva el derecho de admisión.
+ 		</p>
+ 		<p>
+ 		  <strong>Tiempo Aire $50</strong>
+ 		</p>
+ 		<p>
+ 		  Haz válida tu recarga llamando al 55 8869 4374 en un horario de Lunes a
+ 		  Domingo de 9am a 6pm y proporcionando tu código de premio enviado vía SMS,
+ 		  número de teléfono al que se realizará la recarga y compañía telefónica a
+ 		  la que pertenece. La recarga se verá reflejada en un periodo máximo de 48
+ 		  hrs días hábiles.
+ 		</p>
+ 		<p>
+ 		  Válido solo para números celulares registrados en la República Mexicana.
+ 		  Válido únicamente con sistema de prepago de compañía telefónica Movistar,
+ 		  Virgin Mobile, AT&amp;T y Telcel. Vigencia para canjear su recarga del 01
+ 		  de febrero al 30 de abril 2020.
+ 		</p>
+ 		<p>
+ 		  <strong>Un año de Spotify</strong>
+ 		</p>
+ 		<p>
+ 		  Códigos canjeables únicamente en la plataforma de Spotify. “EL ORGANIZADOR”
+ 		  y “LA EMPRESA” no se hacen responsables del uso de estos códigos en la
+ 		  plataforma. Cualquier falla con los códigos en la plataforma deberán ser
+ 		  repostados al contacto de Spotify proporcionados en su sitio web. El
+ 		  ganador recibirá 2 códigos con una vigencia de 6 meses cada uno los cual
+ 		  deberá de canjear antes de la vigencia señalada.
+ 		</p>
+ 		<p>
+ 		  <strong>Un año de Netflix</strong>
+ 		</p>
+ 		<p>
+ 		  Códigos canjeables únicamente en la plataforma de Netflix. “EL ORGANIZADOR”
+ 		  y “LA EMPRESA” no se hacen responsables del uso de estos códigos en la
+ 		  plataforma. Cualquier falla con los códigos en la plataforma deberán ser
+ 		  repostados al contacto de Netflix proporcionados en su sitio web. El
+ 		  ganador recibirá 2 códigos con una vigencia de 6 meses cada uno los cual
+ 		  deberá de canjear antes de la vigencia señalada.
+ 		</p>
+ 		<p>
+ 		  <strong>Certificado de Viaje $35mil pesos</strong>
+ 		</p>
+ 		<p>
+ 		  Válidos para canjear en la agencia de viajes Ready4Travel. Llama al 800
+ 		  4610 015 en un horario de Lunes a Jueves 8am a 5pm y Viernes 8am a 2pm y
+ 		  proporciona tu número de certificado para canjearlo. Válido para adquirir
+ 		  transportación aérea, terrestre, hospedaje o experiencias a nivel nacional
+ 		  o internacional. Canjeable en una sola exhibición. Vigencia del certificado
+ 		  al 30 de septiembre 2020. Para reclamar este premio el usuario deberá de
+ 		  enviar el empaque original que contenga el código con el que participó a
+ 		  Mariano Escobedo #526 Piso 7 Colonia Nueva Anzures Alcaldía Miguel Hidalgo
+ 		  CP 11590 antes del 15 de abril 2020. Un mismo participante podrá ganar una
+ 		  única ocasión este premio.
+ 		</p>
+ 		<p>
+ 		  Ninguno de los premios antes mencionados se podrá canjear por dinero en
+ 		  efectivo. En caso de no ser entregados la totalidad de los premios el
+ 		  “ORGANIADOR” y la “EMPRESA” podrán asignarlos para otro fin por así
+ 		  convenir sus intereses.
+ 		</p>
+ 		<p>
+ 		  <strong> RESTRICCIONES PREMIOS FÍSICOS:</strong>
+ 		</p>
+ 		<p>
+ 		  <strong>
+ 		    ECHO DOT SPEKAR ALEXA, AURICULAR BLUETOOTH, BOCINA PORTATIL BLUEHTOOTH
+ 		    PARA CELULAR Y CAMARA GO PRO
+ 		  </strong>
+ 		</p>
+ 		<p>
+ 		  Los premios no incluyen ningún otro concepto, bienes o servicios distintos
+ 		  o adicionales a los enunciados específicamente. Los premios son
+ 		  intransferibles y no se podrá exigir su canje por dinero o por cualquier
+ 		  otro elemento, siendo predeterminado según la semana de promoción. Así
+ 		  mismo, a partir de la entrega del mismo, el “ORGANIZADOR” o “LA EMPRESA” no
+ 		  se hace responsable del uso que el ganador le dé.
+ 		</p>
+ 		<p>
+ 		  Los premios están sujetos a disponibilidad de existencias. La “EMPRESA”
+ 		  podrá variar de marca y modelo de acuerdo a la disponibilidad de
+ 		  inventario.
+ 		</p>
+ 		<p>
+ 		  Los premios físicos son proporcionados directamente por la “EMPRESA”. El
+ 		  “ORGANIZADOR” no se hace responsable de cumplimiento de garantías, calidad
+ 		  y funcionamiento de los mismos.
+ 		</p>
+ 		<p>
+ 		  <strong>GARANTÍA PRODUCTOS FÍSICOS</strong>
+ 		</p>
+ 		<p>
+ 		  La garantía y entrega de los productos físicos será responsabilidad
+ 		  exclusivamente de <strong>GV Muebles SA de CV.</strong>
+ 		</p>
+ 		<p>
+ 		  La garantía, es exclusivamente por defectos de fábrica, y esta tendrá una
+ 		  vigencia de tres meses, que empezaran a correr al momento en que el
+ 		  usuario, reciba el producto a su entera satisfacción, y esta será aplicable
+ 		  siempre y cuando se cumpla con lo siguiente;:
+ 		</p>
+ 		<p>
+ 		  1.- Antes de hacer valida una garantía, esta será reportada vía telefónica
+ 		  a los números 57393272 y al 75763934, para ser atendidos por personal
+ 		  capacitado que le brindará apoyo única y exclusivamente al usuario
+ 		  propietario del producto, por los posibles problemas que pudiera tener el
+ 		  producto en un horario de atención de Lunes a Viernes de 10:00am a 5:00pm.
+ 		</p>
+ 		<p>
+ 		  2.- Una vez aprobada la garantía, por el personal, que brindó apoyo vía
+ 		  telefónica al usuario propietario del producto, en la que se justificó el
+ 		  defecto de fábrica, el producto deberá ser enviado con la póliza original
+ 		  la cual no deberá contener tachaduras enmendaduras o mutilación ya que de
+ 		  lo contrario no se hará efectiva la garantía, así también debe ser en viada
+ 		  la caja original del empaque del producto la cual no deberá contener
+ 		  tachaduras enmendaduras o mutilación ya que de lo contrario no se hará
+ 		  efectiva la garantía.
+ 		</p>
+ 		<p>
+ 		  3.- El tiempo estimado para realizar un cambio físico será de 8 a 12 días
+ 		  hábiles, de entrega partir de su llamada en la cual fue aprobada la
+ 		  garantía por defectos de fábrica, sin ningún cargo adicional.
+ 		</p>
+ 		<p>
+ 		  Casos en que no se aplicara la garantía, a pesar de haber sido recibidos en
+ 		  nuestro almacén;
+ 		</p>
+ 		<p>
+ 		  1.- cuando se observe que el producto fue afectado por el mal manejo
+ 		  ocasionado por el usuario.
+ 		</p>
+ 		<p>
+ 		  2.- cuando el producto este roto, maltratado, rayado, mojado, o que haya
+ 		  sido utilizado de forma distinta a su uso natural, etc.
+ 		</p>
+ 		<p>
+ 		  En el caso de que el usuario, envié el producto al almacén para hacer
+ 		  efectiva una garantía que no reúna los requisitos, el producto le será
+ 		  devuelto, inmediatamente, con cargos a su costa.
+ 		</p>
+ 		<p>
+ 		  <strong>H) </strong>
+ 		  <strong>EXCLUSIÓN DE GARANTÍAS Y DE RESPONSABILIDAD. </strong>
+ 		</p>
+ 		<p>
+ 		  “EL ORGANIZADOR” no garantiza ni se hace responsable en ningún caso ni
+ 		  circunstancia de los siguientes hechos y contenidos, daños y perjuicios que
+ 		  pudieran, en su caso, derivarse de los mismos:
+ 		</p>
+ 		<p>
+ 		  - Del uso ilícito, negligente, fraudulento, suplantando la personalidad de
+ 		  un tercero o contrario al contenido de estas condiciones generales, a la
+ 		  buena fe, a los usos generalmente admitidos o al orden público, de la web y
+ 		  de su servicio por los “PARTICIPANTES”.
+ 		</p>
+ 		<p>
+ 		  - Del uso de marca, nombre comercial, denominación, logotipo, eslogan u
+ 		  otros signos distintivos que se utilicen en los nombres de campaña sin
+ 		  previa autorización del autor.
+ 		</p>
+ 		<p>
+ 		  - De las vulneraciones o infracciones de las leyes, usos o costumbres
+ 		  vigentes en materia de derechos de propiedad industrial, derechos de autor,
+ 		  imagen, propiedad, publicidad o competencia, entre otros, de terceros.
+ 		</p>
+ 		<p>
+ 		  - Si la calidad de los productos que forman parte del premio, no estuvieran
+ 		  a satisfacción del ganador, en virtud de que la calidad del premio es
+ 		  responsabilidad exclusiva del fabricante. Por lo anterior, cualquier
+ 		  defecto o validez de la garantía deberá de hacerse efectiva directamente
+ 		  con el mismo.
+ 		</p>
+ 		<p>
+ 		  - Accidentes, incidentes o cualquier otra actividad de riesgo derivada de
+ 		  la utilización de los premios.
+ 		</p>
+ 		<p>
+ 		  - El centro de atención al cliente para todo los relacionado con la campaña
+ 		  estará disponible en el Call Center 55 8869 4374 en horario de lunes a
+ 		  domingo de 9:00am a 6:00pm, exceptos días festivos nacionales.
+ 		</p>
+ 		<p>
+ 		  - “EL ORGANIZADOR” no se hace responsable por situaciones ajenas a los
+ 		  “TÉRMINOS” aquí mencionados.
+ 		</p>
+ 		<p>
+ 		  - Los premios no son canjeables por efectivo ni por algún otro premio.
+ 		</p>
+ 		<p>
+ 		  <strong>I) </strong>
+ 		  <strong>FACEBOOK </strong>
+ 		</p>
+ 		<p>
+ 		  Todo Participante que comparta las imágenes de su experiencia acepta el
+ 		  contenido de las presentes bases, términos y condiciones y en el mismo acto
+ 		otorga su consentimiento para que su imagen sea publicada en el sitio  <a href="http://www.serviciocertificadogm.com.mx">web</a> de la promoción o
+ 		  en los medios que EL ORGANIZADOR y LA EMPRESA consideren pertinentes. En
+ 		  consecuencia, el Participante debe conocer obligatoriamente las presentes
+ 		  bases, términos y condiciones antes de su participación.
+ 		</p>
+ 		<p>
+ 		  <strong>J) </strong>
+ 		  <strong>INFORMACIÓN PROPORCIONADA.</strong>
+ 		  <strong></strong>
+ 		</p>
+ 		<p>
+ 		  Cualquier violación de los “TÉRMINOS”, cualquier falsedad en el registro o
+ 		  la conducta errónea y/o dolosa del ganador resultará en su descalificación
+ 		  inmediata, a la completa discreción de “EL ORGANIZADOR”, todos los
+ 		  privilegios en su carácter de ganador serán terminados de manera inmediata.
+ 		  El recibo de cualquiera de los componentes de esta “PROMOCIÓN” por parte
+ 		  del ganador se encuentra condicionado al cumplimiento previo con todas y
+ 		  cada una de las leyes federales, estatales y locales, regulaciones y
+ 		  reglamentos que sean aplicables. Cada ganador es responsable de los
+ 		impuestos federales, estatales o locales que pudiesen ser aplicables.  <strong></strong>
+ 		</p>
+ 		<p>
+ 		  <strong>K) </strong>
+ 		  <strong>PUBLICIDAD</strong>
+ 		</p>
+ 		<p>
+ 		  La participación en la promoción supondrá el consentimiento inequívoco del
+ 		  ganador, titulares de los datos, al tratamiento de los mismos por parte de
+ 		  EL ORGANIZADOR y LA EMPRESA para utilizar publicitariamente su nombre e
+ 		  imagen en el material publicitario relacionado con la presente promoción.
+ 		</p>
+ 		<p>
+ 		  <strong>L) </strong>
+ 		  <strong>MODIFICACIONES</strong>
+ 		</p>
+ 		<p>
+ 		  Todas las promociones del ORGANIZADOR pueden ser suspendidas, canceladas o
+ 		modificadas total o parcialmente en cualquier momento dando el aviso a los  <strong>participantes</strong>, así como haciendo la publicación en la
+ 		  página web y/o en el medio donde se publique la presente Promoción. EL
+ 		  ORGANIZADOR es quien interpretará todas las cuestiones que se susciten con
+ 		  relación a esta promoción y a las bases, términos y condiciones de la
+ 		  Promoción.
+ 		</p>
+ 		<p>
+ 		  <strong>M) </strong>
+ 		  <strong>AUTORIZACIÓN</strong>
+ 		</p>
+ 		<p>
+ 		  Los participantes que resulten ganadores de esta Promoción autorizan
+ 		  expresa e irrevocablemente a EL ORGANIZADOR, LA EMPRESA a difundir en los
+ 		  medios que estimen convenientes, así como el nombre, apellido, país y
+ 		  ciudad de origen, fotografías, videos y en general todos aquellos datos que
+ 		  pudieran requerirse con motivo de difundir esta Promoción en los medios y
+ 		  en la forma en que así se disponga, sin derecho a compensación,
+ 		  remuneración o retribución alguna.
+ 		</p>
+ 		<p>
+ 		  <strong>N) </strong>
+ 		  <strong>LEYES</strong>
+ 		  .
+ 		</p>
+ 		<p>
+ 		  Esta promoción se considerará emitida conforme a las leyes de la República
+ 		  Mexicana.
+ 		</p>
+ 		<p>
+ 		  <strong>O) </strong>
+ 		  <strong>LIMITACIÓN.</strong>
+ 		</p>
+ 		<p>
+ 		  EL ORGANIZADOR y LA EMPRESA no serán responsables por las pérdidas, daños o
+ 		  perjuicios sufridos por el ganador, por cualquier perjuicio que pudiera
+ 		  provenir del caso fortuito o fuerza mayor, actos de terceros y/o cualquier
+ 		  responsabilidad que no pueda ser directamente imputable.
+ 		</p>
+ 		<p>
+ 		  Ni EL ORGANIZADOR, ni LA EMPRESA, ni sus directores, empleados, sociedades
+ 		  subsidiarias o del mismo grupo ni los empleados o directores de estas serán
+ 		  responsables por cualquier daño o perjuicio, de cualquier tipo que fuere,
+ 		  que pudieren sufrir los <strong>Participantes</strong> o terceros, sobre
+ 		  sus personas o bienes, con motivo de o con relación a su participación en
+ 		  la Promoción y/o por la utilización o consumo de cualquiera de los bienes
+ 		  adquiridos respecto al premio.
+ 		</p>
+ 		<p>
+ 		  <strong>P) </strong>
+ 		  <strong>DATOS PERSONALES Y POLÍTICA DE PRIVACIDAD.</strong>
+ 		</p>
+ 		<p>
+ 		  EL ORGANIZADOR es responsable del tratamiento de los datos personales de
+ 		  los participantes y de los posibles ganadores, por lo que hace un esfuerzo
+ 		  permanente para salvaguardarlos.
+ 		</p>
+ 		<p>
+ 		  Hacemos del conocimiento de los Participantes y de los Ganadores que los
+ 		  datos personales que serán requeridos son:
+ 		</p>
+ 		<p>
+ 		  *Nombre completo
+ 		</p>
+ 		<p>
+ 		  *Número de celular (10 dígitos)
+ 		</p>
+ 		<p>
+ 		  *Correo electrónico
+ 		</p>
+ 		<p>
+ 		  *Dirección para envío de premios físicos
+ 		</p>
+ 		<p>
+ 		  Los cuales serán utilizados exclusivamente para ponernos en contacto con
+ 		  los participantes, enviar promociones especiales relacionadas a esta
+ 		  promoción, así como mantener actualizados nuestros registros a fin de poder
+ 		  responderle a sus consultas. El Participante y Ganador tienen derecho de
+ 		  acceder, rectificar y cancelar el tratamiento de sus datos personales, así
+ 		  como de oponerse al tratamiento de los mismos, limitar su uso o revocar el
+ 		  consentimiento que para tal fin que hayan sido otorgados.
+ 		</p>
+ 		<p>
+ 		  Por lo anterior, los datos personales que se faciliten para participar en
+ 		  la presente promoción, se rigen por las bases de política de privacidad de
+ 		  EL ORGANIZADOR, para mayores informes consultar el sitio web de la
+ 		  promoción.
+ 		</p>
+ 		<p>
+ 		  <strong>Q) </strong>
+ 		  <strong>RESPONSABILIDAD</strong>
+ 		</p>
+ 		<p>
+ 		  Los datos de carácter personal que proporcionen los Participantes de la
+ 		  Promoción deberán ser actualizados, veraces y completos.
+ 		</p>
+ 		<p>
+ 		  EL ORGANIZADOR y LA EMPRESA no se responsabilizan de las posibles pérdidas,
+ 		  deterioros, robos, retrasos o cualquier otra circunstancia imputable a
+ 		  terceros, internet o la aplicación WEB que puedan afectar al desarrollo de
+ 		  la presente Promoción.
+ 		</p>
+ 		<p>
+ 		  <strong>R) </strong>
+ 		  <strong>JURISDICCIÓN</strong>
+ 		</p>
+ 		<p>
+ 		  Las partes se someten para la resolución de cualquier controversia que
+ 		  pueda surgir en relación al presente documento, a la jurisdicción y fuero
+ 		  de los Juzgados y Tribunales de la Ciudad de México, renunciando a
+ 		  cualquier otra que pudiera corresponderles.
+ 		</p>
+ 		<p>
+ 		  <strong>
+ 		    Todos los Participantes por el simple hecho de participar en esta
+ 		    promoción aceptan, conocen y reconocen el contenido y las disposiciones
+ 		    contempladas en las bases, términos y condiciones de la misma.
+ 		  </strong>
+ 		</p>
+ 		<p>
+ 		  <a name="_Hlk30437075">
+ 		    Para dudas o aclaraciones respecto a la Promoción, favor de comunicarse
+ 		    al teléfono: 55 8869 4374 en un horario de atención de Lunes a Domingo
+ 		    de 9:00am a 6:00pm durante la vigencia de la promoción.
+ 		  </a>
+ 		</p>
+ 		<p>
+ 		  <strong>REGISTRO PROFECO: PFC.C.A./000072-2020</strong>
+ 		</p>
+ 	</div>
+ </div> 
+</div>
+
+<script type="text/javascript">
+	var ps = new PerfectScrollbar('.page-la-promo-barcel #remodal-legales .legales-container',{
+		suppressScrollX: true
+	});	
+</script>
