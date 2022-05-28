@@ -33,10 +33,10 @@
 	{% set brand = brand.name %}
 	
 	{% for key, element in brands %}				
-		{% ifbrand == element.link_title%}	
-			{% set next_ = brands[key]+1 and brands[key]+1.hidden == 0 ? key+1 : key+2 %}
+		{% if brand == element.link_title%}	
+			{% set next_ = if brands[key]+1 is defined and brands[key]+1.hidden == 0 ? key+1 : key+2 %}
 
-			{% ifbrands[next_]%}
+			{% if brands[next_] is defined%}
 				{% set next_link = base_url~'/'~" ", "-", brands[next_].link_title|replace({ : })|lower %}
 			{% else %}
 				{% set next_link = base_url~'/marcas' %}
@@ -58,7 +58,7 @@
 					{% set nid = view.render_field('nid',key) %}
           {% set node = node_load(nid) %}	          
           {% set slug = node.field_slug_producto'und'.0.value %}
-          {% set slug_class = node.field_slug_class'und'.0.value ? node.field_slug_class'und'.0.value : "" %}
+          {% set slug_class = if node.field_slug_class'und'.0.value is defined ? node.field_slug_class'und'.0.value : "" %}
           {% set className = node.field_slug_producto'und'.0.value == "Chipotle/Limón" ? "chipotle-limon" : " ", "-", node.field_slug_producto'und'.0.value|lower|replace({ : }) %}
           
 			
@@ -131,7 +131,7 @@
           {% set id = node.field_slug_producto'und'.0.value == "Chipotle/Limón" ? "chipotle-limon" : node.field_slug_producto'und'.0.value|lower %}
           {% set slug = node.field_slug_producto'und'.0.value %}
           {% set color = node.field_color_fondo'und'.0.value %}
-          {% set color_slug = node.field_slug_color'und'.0.value ? node.field_slug_color'und'.0.value : "#F6DB36" %}
+          {% set color_slug = if node.field_slug_color'und'.0.value is defined ? node.field_slug_color'und'.0.value : "#F6DB36" %}
           {% set descripcion = node.field_descripcion_prod'und'.0.value %}
           {% set image_prod = file_load(node.field_imagen_empaque'und'.0.fid) %}
           {% set image_prod = file_create_url(image_prod.uri %})          

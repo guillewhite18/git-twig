@@ -166,7 +166,7 @@
            
             {% set tid = sublink.link_path |split('/') %}
             {% set tax = taxonomy_term_load(tid.2) %}
-            {% set node_url = tax.field_link_nutrimental'und' ? tax.field_link_nutrimental'und'.0.value : "node/3" %}         
+            {% set node_url = if tax.field_link_nutrimental'und' is defined ? tax.field_link_nutrimental'und'.0.value : "node/3" %}         
            
            {% if sublink.has_children == 0 and sublink.plid == menu_id %}
             <li><a href="{{ node_url }}" class="info-link">{{ sublink.link_title }}</a></li>
