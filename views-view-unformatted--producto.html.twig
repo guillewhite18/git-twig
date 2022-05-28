@@ -10,27 +10,27 @@
 
   /*** Main Content product ***/
 	{% set query = EntityFieldQuery() %}
-	query.entityCondition('entity_type', 'node')
+	{% query.entityCondition('entity_type', 'node')
 				   .entityCondition('bundle', 'productos')
 				   .propertyCondition('status', NODE_PUBLISHED	   
 				   .fieldCondition('field_marca', 'tid', tid, '=')					  
-				   .fieldCondition('field_principal', 'value', '1', '='))					  
+				   .fieldCondition('field_principal', 'value', '1', '='))	%}				  
 	{% set main = query.execute() %}	
 	{% set main = main.node %}	
 
 	/*** Brand Campaings ***/
 	{% set query = EntityFieldQuery() %}
-	query.entityCondition('entity_type', 'node')
+	{% query.entityCondition('entity_type', 'node')
 				   .entityCondition('bundle', 'campa_a')
 				   .propertyCondition('status', NODE_PUBLISHED	   
-				   .fieldCondition('field_marca_camp', 'tid', tid, '='))					  
+				   .fieldCondition('field_marca_camp', 'tid', tid, '=')) %}				  
 	{% set campaing = query.execute() %}	
 	{% set campaing = campaing.node %}	
 
 	/*** Next Barnd Link ***/
 	{% set brands = menu_load_links('menu-marcas') %}
 	{% set brand = taxonomy_term_load(tid) %}
-	{% set brand = brand.name
+	{% set brand = brand.name %}
 	
 	{% for key, element in brands %}				
 		{% ifbrand == element.link_title%}	
@@ -68,11 +68,11 @@
 		<!-- END List products -->	
 
 		<div id="fullpage-products">
-			{% ifmain 
-		  	{% for node, nid in main %}in node.nid {% endfor %}
-		  	node in node_load(nid)
+			{% if main  is not empty %}
+		  	{% for node, nid in main %}{% set nid = node.nid} {% endfor %}
+		  	{% set node = node_load(nid) %}
         
-        {% set title = node.title          
+        {% set title = node.title %}         
         {% set color = node.field_color_fondo'und'.0.value %}			        
         {% set image_main = file_load(node.field_imagen_main'und'.0.fid) %}
         {% set image_main = file_create_url(image_main.uri %})
@@ -95,11 +95,11 @@
 			  </div>
 		  {% endif %}
 
-		  {% ifcampaing 
-		  	{% for node, nid in campaing %}in node.nid {% endfor %}
-		  	node in node_load(nid)
+		  {% ifcampaing is not empty %}
+		  	{% for node, nid in campaing %}{% set nid = node.nid} {% endfor %}
+		  	{% set node = node_load(nid) %}
         
-        {% set title = node.title          
+        {% set title = node.title%}          
         {% set color = node.field_color_de_fondo'und'.0.value %}
         {% set descripcion = node.field_descripcion_camp'und'.0.value %}
         {% set link = node.field_link_campania'und'.0.value %}
@@ -108,8 +108,7 @@
 
         {% set brand_tax = node.field_marca_camp'und'.0.tid %}
         {% set brand_tax = taxonomy_term_load(brand_tax) %}
-        {% set brand = brand_tax.name == 'Chips' ? 'Chip´s' : brand_tax.name
-			%}
+        {% set brand = brand_tax.name == 'Chips' ? 'Chip´s' : brand_tax.name %}
 			  <div class="section section-campaing" style="background-color: {{ color }}};">
 		  		<div class="row row-product">
 		  			<div class="col-xs-12 col-product">

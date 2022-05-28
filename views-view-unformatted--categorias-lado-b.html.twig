@@ -16,13 +16,13 @@
 	        {% set title = node.title      
 	        {% set summary = node.field_resumen'und'.0.value %}     
 	        {% set image_note = file_load(node.field_imagen_resumen'und'.0.fid) %}
-	        {% set image_note = file_create_url(image_note.uri %})
+	        {% set image_note = file_create_url(image_note.uri %}
 
 	        {% set cat = node.field_categoria'und'.0.tid %}
 	  	    {% set cat = taxonomy_term_load(cat) %}
-	  	    {% set cat = cat.name
+	  	    {% set cat = cat.name %}
 
-	  	    {% ifcat == "Música"%}{% set class = "music"{% else %}{% ifcat == "Gaming"%}{% set class = "gaming"{% else %}{% set class = "pop" %}{% endif %}
+	  	    {% if cat == "Música" %}{% set class = "music"%}{% elseif cat == "Gaming" %}{% set class = "gaming"{% else %}{% set class = "pop" %}{% endif %}
 			
 		    	<div class="col-xs-12 col-md-4">
 		      <div class="note-card">

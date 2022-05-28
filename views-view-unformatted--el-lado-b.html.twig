@@ -6,33 +6,33 @@
 
   /*** Slider Content ***/
  	{% set query = EntityFieldQuery() %}
- 	query.entityCondition('entity_type', 'node')
+ 	{%query.entityCondition('entity_type', 'node')
  				   .entityCondition('bundle', 'lado_b')	 
  				   .propertyCondition('status', NODE_PUBLISHED   
  				   .fieldCondition('field_principal_home', 'value', '1', '=')
- 				   .propertyOrderBy('created', 'DESC')) 				   
+ 				   .propertyOrderBy('created', 'DESC')) %}				   
  	{% set sliders = query.execute() %}	
  	{% set sliders = sliders.node %}	
 
  	/*** Brand promotion ***/
  	{% set query = EntityFieldQuery() %}
- 	query.entityCondition('entity_type', 'node')
+ 	{%query.entityCondition('entity_type', 'node')
  				   .entityCondition('bundle', 'banner_lado_b')
  				   .propertyCondition('status', NODE_PUBLISHED
  				   .fieldCondition('field_es_promocional', 'value', '1', '=')
  				   .propertyOrderBy('created', 'DESC')
- 				   .range(0, 1))
+ 				   .range(0, 1)) %}
  	{% set promotion = query.execute() %}	
  	{% set promotion = promotion.node %}
 
  	/*** Outstanding note ***/
  	{% set query = EntityFieldQuery() %}
- 	query.entityCondition('entity_type', 'node')
+ 	{% query.entityCondition('entity_type', 'node')
  				   .entityCondition('bundle', 'lado_b')	 
  				   .propertyCondition('status', NODE_PUBLISHED   
  				   .fieldCondition('field_destacada', 'value', '1', '=')
  				   .propertyOrderBy('created', 'DESC')
- 				   .range(0, 1)) 				   
+ 				   .range(0, 1)) %}				   
  	{% set note = query.execute() %}	
  	{% set note = note.node %}
 
@@ -41,20 +41,20 @@
 <div id="pbSliderWrap0" class="o-sliderContainer hidden-xs hidden-sm" style="margin-top:0;">
  <div id="pbSlider0" class='o-slider'>
  	
-		{% for slide, nid in sliders %}{% set = slide.nid
+		{% for slide, nid in sliders %}{% set = slide.nid %}
       {% set node = node_load(nid) %}
       {% set path = drupal_get_path_alias('node/'~nid) %}
 
-      {% set title = node.title      
+      {% set title = node.title %}     
       {% set summary = node.field_resumen'und'.0.value %}     
       {% set image_slider = file_load(node.field_imagen_principal'und'.0.fid) %}
       {% set image_slider = file_create_url(image_slider.uri %})
 
       {% set cat = node.field_categoria'und'.0.tid %}
 	    {% set cat = taxonomy_term_load(cat) %}
-	    {% set cat = cat.name
+	    {% set cat = cat.name %}
 
-	    {% ifcat == "Música"%}{% set class = "music"{% else %}{% ifcat == "Gaming"%}{% set class = "gaming"{% else %}{% set class = "pop" %}{% endif %}
+	    {% if cat == "Música"%}{% set class = "music" %}{% elseif cat == "Gaming" %}{% set class = "gaming" %}{% else %}{% set class = "pop" %}{% endif %}
 	
 	  <div class="o-slider--item" data-image="{{ image_slider }}}">
 	   <div class="o-slider-textWrap">
@@ -72,20 +72,20 @@
 <div id="pbSliderWrap1" class="o-sliderContainer hidden-md hidden-lg" style="margin-top:0;">
  <div id="pbSlider1" class="o-slider">
  	
-		{% for slide, nid in sliders %}{% set = slide.nid
+		{% for slide, nid in sliders %}{% set = slide.nid %}
       {% set node = node_load(nid) %}
       {% set path = drupal_get_path_alias('node/'~nid) %}
 
-      {% set title = node.title      
+      {% set title = node.title %}     
       {% set summary = node.field_resumen'und'.0.value %}     
       {% set image_slider = file_load(node.field_imagen_principal_mb'und'.0.fid) %}
       {% set image_slider = file_create_url(image_slider.uri %})
 
       {% set cat = node.field_categoria'und'.0.tid %}
 	    {% set cat = taxonomy_term_load(cat) %}
-	    {% set cat = cat.name
+	    {% set cat = cat.name %}
 
-	    {% ifcat == "Música"%}{% set class = "music"{% else %}{% ifcat == "Gaming"%}{% set class = "gaming"{% else %}{% set class = "pop" %}{% endif %}
+	    {% if cat == "Música"%}{% set class = "music" %}{% elseif cat == "Gaming" %}{% set class = "gaming" %}{% else %}{% set class = "pop" %}{% endif %}
 	
 	  <div class="o-slider--item" data-image="{{ image_slider }}}">
 	   <div class="o-slider-textWrap">
@@ -104,9 +104,9 @@
 <!-- Section content Home Lado B -->
 <section id="lado-banner-section" class="section-container">
 	<div class="container lado-banner-container">
-		{% ifpromotion 
-				{% for node, nid in promotion %}in node.nid {% endfor %}
-		  	node in node_load(nid)
+	{% if promotion is not empty %}
+				{% for node, nid in promotion %} {% set nid = node.nid} {% endfor %}
+		        {% set node = node_load(nid) %}
                 
         {% set link_banner = node.field_link_promocional'und'.0.value %}
         {% set image_banner = file_load(node.field_banner_promocional'und'.0.fid) %}
@@ -114,7 +114,7 @@
 
         {% set image_banner_mb = file_load(node.field_banner_promocional_mb'und'.0.fid) %}
         {% set image_banner_mb = file_create_url(image_banner_mb.uri %})
-		%}
+		
 			<!-- Banner promocional -->
 			<div class="jumbotron banner-promocional">
 				<a href="{{ link_banner }}"><img src="{{ image_banner }}" class="img-responsive hidden-xs hidden-sm"></a>
@@ -126,22 +126,23 @@
 
 <section id="lado-note-section" class="section-container">
 	<div class="container note-container">
-		{% ifnote 
-				{% for node, nid in note %}in node.nid {% endfor %}
-		  	node in node_load(nid)
+		{% if note is not empty %}
+				{% for node, nid in note %}{% set nid = node.nid} {% endfor %}
+		  	{% set node = node_load(nid) %}
 		  	{% set path = drupal_get_path_alias('node/'~nid) %}
                         
-        {% set title = node.title      
+        {% set title = node.title %}     
         {% set summary = node.field_resumen'und'.0.value %}     
         {% set image_note = file_load(node.field_imagen_destacada'und'.0.fid) %}
         {% set image_note = file_create_url(image_note.uri %})
 
         {% set cat = node.field_categoria'und'.0.tid %}
   	    {% set cat = taxonomy_term_load(cat) %}
-  	    {% set cat = cat.name
+  	    {% set cat = cat.name%}
 
-  	    {% ifcat == "Música"%}{% set class = "music"{% else %}{% ifcat == "Gaming"%}{% set class = "gaming"{% else %}%}{% set class = "pop" %}{% endif %}
-		
+
+  	    {% if cat == "Música" %}{% set class = "music" %}{% elseif cat == "Gaming" %}{% set class = "gaming" %}{% else %}{% set class = "pop" %}{% endif %}
+		%}
 			<div class="row">
 		    <div class="col-xs-12 col-md-7">
 		      <img class="img-responsive" src="{{ image_note }}}" alt="">
@@ -179,7 +180,7 @@
 	  	    {% set cat = taxonomy_term_load(cat) %}
 	  	    {% set cat = cat.name
 
-	  	    {% ifcat == "Música"%}{% set class = "music"{% else %}{% ifcat == "Gaming"%}{% set class = "gaming"{% else %}{% set class = "pop" %}{% endif %}
+	  	    {% if cat == "Música"%}{% set class = "music" %}{% elseif cat == "Gaming"%}{% set class = "gaming" %}{% else %}{% set class = "pop" %}{% endif %}
 			
 		    	<div class="col-xs-12 col-md-4">
 		      <div class="note-card">

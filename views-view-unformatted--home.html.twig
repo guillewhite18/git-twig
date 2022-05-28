@@ -15,11 +15,11 @@
           {% set node = node_load(nid) %}
       
       	{% ifnode.type == "home" %}
-	      		          link in node.field_link_page'und'.0.value 
-	          image_bkg in  file_load(node.field_imagen_background'und'.0.fid)
+	      		         {% link in node.field_link_page'und'.0.value %}
+	         {% image_bkg in  file_load(node.field_imagen_background'und'.0.fid) %}
 	          {% set image_bkg = file_create_url(image_bkg.uri %})
 	                   
-	          {# if($node->title == "Una botanita"){ #}
+	          {# if($node->title == "Una botanita") #}
 	          	{% set image_logo = file_load(node.field_imagen_logo'und'.0.fid) %}
 	          	{% set image_logo = file_create_url(image_logo.uri %})	          
 		        {# } #}
