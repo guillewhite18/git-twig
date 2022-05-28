@@ -40,10 +40,10 @@
 		        {% set node = node_load(nid) %}
 
         {% set image_banner = file_load(node.field_banner_promocional'und'.0.fid) %}
-        {% set image_banner = file_create_url(image_banner.uri %})
+        {% set image_banner = file_create_url(image_banner.uri) %}
 
         {% set image_banner_mb = file_load(node.field_banner_promocional_mb'und'.0.fid) %}
-        {% set image_banner_mb = file_create_url(image_banner_mb.uri %})
+        {% set image_banner_mb = file_create_url(image_banner_mb.uri) %}
 		%}
 			<!-- Banner promocional -->
 			<div class="jumbotron banner-categorie">
