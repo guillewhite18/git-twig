@@ -38,10 +38,6 @@
 		{% if banner is not empty %}
 				{% for node, nid in banner %} {% set nid = node.nid %} {% endfor %}
 		        {% set node = node_load(nid) %}
-                {% set path = drupal_get_path_alias('node/'~nid) %}
-                {% set title = node.title %}
-
- {% set summary = node.field_resumen'und'.0.value %}
 
         {% set image_banner = file_load(node.field_banner_promocional'und'.0.fid) %}
         {% set image_banner = file_create_url(image_banner.uri %})
