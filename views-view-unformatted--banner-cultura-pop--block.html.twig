@@ -36,7 +36,7 @@
 <section id="categorie-banner-section" class="section-container">
 	<div class="categorie-banner-container">
 		{% if banner is not empty %}
-				{% for node, nid in banner %} {% set nid = node.nid} {% endfor %}
+				{% for node, nid in banner %} {% set nid = node.nid %} {% endfor %}
 		        {% set node = node_load(nid) %}
                 {% set path = drupal_get_path_alias('node/'~nid) %}
                 {% set title = node.title %}

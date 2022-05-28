@@ -3,98 +3,43 @@
 	{% set theme_url = drupal_get_path('theme','barcel') %}
 	{% set theme_base = base_url~'/'~theme_url~'/' %}
 
-	/*** Get the bran tid ***/
-	{% set nid = view.render_field('nid',0) %}
- {% set node = node_load(nid) %}
- {% set tid = node.field_banner_categoria'und'.0.tid %}
-
- /*** Brand Categorie ***/
- {% set query = EntityFieldQuery() %}
- query.entityCondition('entity_type', 'node')
- 			  .entityCondition('bundle', 'banner_lado_b')
- 			  .propertyCondition('status', NODE_PUBLISHED
- 			  .fieldCondition('field_banner_categoria', 'tid', tid, '=')
- 			  .propertyOrderBy('created', 'DESC')
- 			  .range(0, 1))
- {% set banner = query.execute() %}	
- {% set banner = banner.node %}
-
- /*** Outstanding note ***/
- {% set query = EntityFieldQuery() %}
- query.entityCondition('entity_type', 'node')
- 			  .entityCondition('bundle', 'lado_b')	 
- 			  .propertyCondition('status', NODE_PUBLISHED  
- 			  .fieldCondition('field_categoria', 'tid', tid, '=')
- 			  .fieldCondition('field_destacada', 'value', '1', '=')
- 			  .propertyOrderBy('created', 'DESC')
- 			  .range(0, 1)) 				  
- {% set note = query.execute() %}	
- {% set note = note.node %}
+	{% set num_campaings = count(rows) %}
 
 
-<!-- Section content Banner categorie -->
-<section id="categorie-banner-section" class="section-container">
-	<div class="categorie-banner-container">
-		{% ifbanner 
-				{% for node, nid in banner %}in node.nid {% endfor %}
-		 	node in node_load(nid)
-            
-    {% set image_banner = file_load(node.field_banner_promocional'und'.0.fid) %}
-    {% set image_banner = file_create_url(image_banner.uri %})
-
-    {% set image_banner_mb = file_load(node.field_banner_promocional_mb'und'.0.fid) %}
-    {% set image_banner_mb = file_create_url(image_banner_mb.uri %})
-		%}
-			<!-- Banner promocional -->
-			<div class="jumbotron banner-categorie">
-				<img src="{{ image_banner }}" class="img-responsive hidden-xs hidden-sm">
-				<img src="{{ image_banner_mb }}" class="img-responsive hidden-md hidden-lg">
-			</div>
+<section id="campaings-section" class="section-container">
+	<div class="campaings-container">
+		{% if(num_campaings > 1): %}
+			<div class="floating arrow-down"></div>
 		{% endif %}
 
-		<img src="{{ theme_base }}images/scroll-page.png" class="img-responsive scroll-page">
-	</div>
-</section>
+		<div id="fullpage-campaings">
+			 
+				{% for rows, rows in key.value): %}
+					{% set nid = view.render_field('nid',key) %}
+                    {% set node = node_load(nid)%}
+                    
+                    {% set title = node.title %}                    
+                    {% set color = node.field_color_de_fondo 'und'.0.'value' %}
+                    {% set descripcion = node.field_descripcion_camp 'und'.0.'value' %}
+                    {% set link = .node.field_link_campania 'und'.0.'value' %}
+                    {% set image_banner =  file_load(node.field_imagen_campania 'und'.0.'fid') %}
+                    {% set image_banner = file_create_url(image_banner.uri) %}
 
-<!-- Section content Outstanding note categorie -->
-<section id="categorie-note-section" class="section-container">
-	<div class="container categorie-note-container">
-		{% ifnote 
-				{% for node, nid in note %}in node.nid {% endfor %}
-		 	node in node_load(nid)
-		 	{% set path = drupal_get_path_alias('node/'~nid) %}
-            
-    {% set title = node.title   
-    {% set summary = node.field_resumen'und'.0.value %}  
-    {% set image_note = file_load(node.field_imagen_destacada'und'.0.fid) %}
-    {% set image_note = file_create_url(image_note.uri %})
-
-    {% set cat = node.field_categoria'und'.0.tid %}
- 	  {% set cat = taxonomy_term_load(cat) %}
- 	  {% set cat = cat.name
-
- 	  {% ifcat == "Música"%}{% set class = "music"{% else %}{% ifcat == "Gaming"%}{% set class = "gaming"{% else %}%}{% set class = "pop" %}{% endif %}
-		
-			<div class="row">
-		  <div class="col-xs-12 col-md-7">
-		   <img class="img-responsive" src="{{ image_note }}}" alt="">
-		  </div>
-		  <div class="col-xs-12 col-md-5">
-		  	<div class="note-content {{ class }}}">
-				  	<span class="categorie-note-categorie {{ class }}">{{ cat }}</span>
-				  <h3 class="categorie-note-title">{{ title }}</h3>
-				  <p class="categorie-note-paragraph">{{ summary }}</p>
-				  <a class="btn btn-primary categorie-note-btn text-uppercase {{ class }}" href="{{ base_url~'/'~path }}">Leer Más</a>
-				 </div>
-		  </div>
-		 </div>
-		{% endif %}
-	</div>
-</section>
-
-<!-- Section content notes categorie -->
-<section id="categorie-head-section" class="section-container">
-	<div class="container categorie-container">
-		<h2 class="categorie-title text-uppercase">Más <span>Lado B</span> para ti</h2>
+                    {% set brand_tax = node.field_marca_camp'und'.0.'tid' %}
+                    {% setbrand_tax = taxonomy_term_load(brand_tax)%}
+                    {% setbrand = (brand_tax.name == 'Chips') ? 'Chip´s' : brand_tax.name%}
+			
+		    	<div class="section" style="background-color: {{ color;}};">
+		    		<div class="row row-campaing">
+		    			<div class="col-xs-12 col-campaing">
+		    				<a href="{{ link }}" class="link-campania" target="_blank">
+		    					<img src="{{ image_banner }}" class="img-responsive banner-campaing">
+		    				</a>
+		    				<h2 class="head-campaing">{{brand}}<br><small>{{ title }}</small></h2>		
+		    			</div>
+		    		</div>
+		    	</div>		    
+		    {% endfor %}
+		</div>
 	</div>
 </section>
