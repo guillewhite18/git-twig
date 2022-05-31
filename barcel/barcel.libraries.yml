@@ -1,0 +1,28 @@
+global-styling:
+  css:
+    theme:
+      css/menu/menu-overlay.css: {}
+      css/animate/animate.css: {}
+      css/scrollbar/perfect-scrollbar.css: {}
+      css/remodal/remodal.css: {}
+      css/remodal/remodal-default-theme.css: {}
+      css/fullPage/fullpage.css: {}
+      css/slider/slider.css: {}
+      css/owlcarousel/owl.carousel.min.css: {}
+      css/owlcarousel/owl.theme.default.min.css: {}
+      css/unitegallery/unite-gallery.css: {}
+      css/unitegallery/ug-theme-default.css: {}
+      sass/styles.scss: {}
+global-scripts:
+  js:
+    js/parallax/parallax.js: {}
+    js/jPages/jPages.min.js: {}
+    js/scrollbar/perfect-scrollbar.js: {}
+    js/remodal/remodal.js: {}
+    js/fullPage/scrolloverflow.min.js: {}
+    js/fullPage/fullpage.js: {}
+    js/owlcarousel/owl.carousel.min.js: {}
+    js/unitegallery/unitegallery.min.js: {}
+    js/unitegallery/ug-theme-default.js: {}
+    js/main.js: {}
+​

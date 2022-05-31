@@ -1,0 +1,50 @@
+{{base_url}}  
+	
+	{% set theme_url = drupal_get_path('theme','barcel') %}
+	{% set theme_base = base_url~'/'~theme_url~'/' %}
+
+	form.actions.submit['#value']{% set = 'Enviar' %}|t 
+
+<section id="contact-section" class="section-container">
+	<div class="contact-container">
+		<div class="row">
+			<div class="col-xs-12">
+				<h1 class="page-header">Contacto</h1>
+				<p>Dinos lo que piensas y nos complacerá comunicarnos contigo.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">				 
+        	{{ form.submitted.nombre }}
+        	{{ form.submitted.apellido }}
+        	{{ form.submitted.correo_electronico }}
+        	{{ form.submitted.telefono }}
+        	{{ form.submitted.comentario }}       
+			</div>
+		</div>
+		<div class="row">
+		  <div class="col-xs-12 text-center">
+		    <div class="checkbox">
+		      <label>
+		        <input type="checkbox" value=""> Acepto el <a href="{{ base_url }}/terminos-y-condiciones" class="contacto-link" target="_blank">Aviso de privacidad</a>
+		      </label>
+		    </div>
+
+		    {{ form.captcha }}
+		  </div>
+		</div>
+		<div class="row">
+		  {{ form.details.sid }}
+		  {{ form.details.page_num }}
+		  {{ form.details.page_count }}
+		  {{ form.details.finished }}
+		  {{ form.form_build_id }}
+		  {{ form.form_token }}
+		  {{ form.form_id }}
+
+		  <div class="col-xs-12 text-center">
+		    {{ form.actions }}
+		  </div>
+		</div>
+	</div>
+</section>

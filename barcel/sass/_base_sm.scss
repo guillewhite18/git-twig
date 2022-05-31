@@ -1,0 +1,355 @@
+@media (min-width: 769px){
+	body{
+		font-size: 11px;
+	}
+
+	.container{
+		width: 90%;
+	}
+
+	.navbar-lado-b{
+		.navbar-brand{
+			margin-left: 15px !important;	
+		}
+		
+		.region-navigation{
+			width: 25%;
+		    padding-bottom: 1vw;
+
+			input{
+				width: 80%;
+				padding: 4px 10px;
+			}
+		}
+
+		#navbar-lado-b{
+			width: 55%;
+
+			.nav-lado-b{
+				li{
+					.link-menu{
+						font-size: 14px;
+					}
+
+					.link-lado-b{
+						font-size: 16px;
+					}
+
+					.link-btn{
+						font-size: 16px;
+					}
+				}
+			}
+		}
+	}
+
+	.note-content{
+		padding: 20px 35px;
+	}
+
+	.note-card-body{
+		padding: 10px 25px;
+	}
+
+	.footer{
+		&.footer-lado-b{
+			.navbar-right{
+			  	li{
+				    a{
+				      span{
+				        width: 25px;
+				      }
+				    }
+
+				    &.span-text{
+				    	margin-top: 10px;
+				    }
+			  	}
+			}
+		}
+	}
+
+	.views-productos{
+		#products-section{
+			.products-container{
+				.arrow-down{
+					top: 43vw;
+					width: 22px;
+				}
+
+				.list-slugs-product{
+					li{
+						line-height: 30px;
+					}
+				}
+
+				.prod-description{
+					font-size: 18px;
+				}
+
+				.banner-campaing{
+					width: 85vw;
+				}
+
+				.package-product{
+					width: 27vw;
+				}
+			}
+		}
+	}
+
+	.page-el-lado-b{
+		#block-system-main{
+			.o-sliderContainer{
+				.o-slider{
+					.o-slider--item{
+						.o-slider-textWrap{
+							.o-slider-title{
+								font-size: 2.5vw;
+							}
+
+							.o-slider-paragraph{
+								font-size: 1.1vw;
+							}
+						}
+					}
+				}
+			}
+
+			#lado-note-section{				
+				.note-container{
+					.note-title{
+						line-height: 20px;
+					}
+
+					.note-categorie{
+						&.pop{
+							width: 7vw;
+						}
+					}
+
+					.note-paragraph{
+						line-height: 25px;
+					}
+				}
+			}
+
+			#mas-lado-section{
+				margin: 2% auto 10%;
+
+				.mas-lado-container{
+					.note-card-body{
+						.note-card-title{
+							line-height: 20px;
+						}
+
+						.note-card-text{
+							line-height: 25px;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.page-categories{
+		.block-views{
+			#categorie-note-section{
+				.categorie-note-container{
+					.categorie-note-title{
+						line-height: 34px;
+					}
+				}
+			}
+		}
+
+		#block-system-main{
+			#categorie-notes-section{
+				.categorie-container{
+					.note-card-body{
+						.note-card-title{
+							line-height: 26px;
+						}
+
+						.note-card-text{
+							line-height: 25px;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.node-type-lado-b{
+		#block-system-main{
+			#node-content-section{
+				.node-container{
+					width: 65vw;
+
+					.note-categorie{
+						width: 5vw;
+
+						&.pop{
+							width: 7vw;							
+						}
+					}
+				}
+			}
+
+			#node-carousel-section{
+				.node-carousel-container{
+					.note-card-body{
+						.note-card-categorie{
+							width: 5vw;
+
+							&.pop{
+								width: 7vw;							
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.page-campanias{
+		#campaings-section{
+			.campaings-container{
+				.arrow-down{
+					top: 43vw;
+					width: 22px;
+				}
+
+				.banner-campaing{
+					width: 55vw;
+				}
+			}
+		}
+	}
+
+	.page-lado-b{
+		#block-system-main{
+			#lado-video-section{
+				.lado-video-container{
+					width: 70%;
+					margin: 10% auto;
+				}
+			}
+		}
+	}
+
+	.page-la-promo-barcel{
+		#home-section{
+			.banner-home-container{
+				.row{
+					.logo-promo{
+						width: 25vw;
+					}
+				}
+
+				.promo-bkg{
+					margin: 1% 9%;
+
+					.promo-content{
+						padding: 0vw 15vw;
+						padding-top: 10vw;
+						padding-bottom: 8vw;
+					}
+				}				
+			}
+		}
+	}
+}
+
+@media (min-width: 992px){
+	
+}
+
+@media (min-width: 1024px){
+	.navbar-lado-b{
+		.region-navigation{
+			padding-bottom: 1vw;
+		}
+	}
+
+	.page-el-lado-b{
+		.scroll-page{
+			top: 46vw;
+		}
+
+		#block-system-main{
+			#lado-note-section{
+				.note-container{
+					.note-title{
+						font-size: 1.5vw;
+						line-height: 20px;
+					}
+
+					.note-paragraph{
+						line-height: 20px;
+					}
+				}
+			}
+
+			#mas-lado-section{
+				.mas-lado-container{
+					.note-card-body{
+						.note-card-text{
+							line-height: 20px;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.page-categories{
+		.block-views{
+			#categorie-note-section{
+				.categorie-note-container{
+					.categorie-note-paragraph{
+						line-height: 20px;
+					}
+					.categorie-note-title{
+						font-size: 1.5vw;
+						line-height: 20px;						
+					}
+				}
+			}
+		}
+
+		#block-system-main{
+			#categorie-notes-section{
+				.categorie-container{
+					.note-card-body{
+						.note-card-title{
+							line-height: 20px;	
+						}
+
+						.note-card-text{
+							line-height: 20px;		
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.node-type-lado-b{
+		#block-system-main{
+			#node-carousel-section{
+				.node-carousel-container{
+					.note-card-body{
+						.note-card-title{
+							line-height: 20px;
+						}
+
+						.note-card-text{
+							line-height: 20px;
+						}
+					}
+				}
+			}
+		}
+	}
+}

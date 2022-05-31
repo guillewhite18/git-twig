@@ -1,0 +1,412 @@
+{{base_url}}   
+ 
+ {% set theme_url = drupal_get_path('theme','barcel') %}
+ {% set theme_base = base_url~'/'~theme_url~'/' %}
+
+
+<!-- Main Menu Navigation Desktop -->
+<nav class="navbar navbar-default navbar-home hidden-xs hidden-sm">
+ <div class="container-fluid">
+  <div class="navbar-header"> 
+   {% if logo %}
+    <a href="{{ front_page }}" id="logo" class="navbar-brand" rel="home" title="{{ 'Home'|t }}">
+     <img src="{{ logo }}" alt="{{ 'Home'|t }}" />
+    </a>
+   {% endif %}     
+  </div>
+
+  <div id="navbar" class="navbar-collapse collapse hidden-xs hidden-sm">
+   <ul class="nav navbar-nav navbar-right">
+    {% set social_menu = menu_load_links('menu-redes-sociales') %}   
+    {% for menu, link in social_menu %}
+      {% if link.hidden == 1%} {% set continue = true %}
+      {% iflink.link_title == "Contacto" %}
+       <li><a href="{{ link.link_path }}" class="social-link" data-link="contacto"><i>{{ link.link_title }}</i></a></li>
+{% else %}
+       <li><a href="{{ link.link_path }}" class="{{ link.options.item_attributes.class }}" data-link="{{ link.options.attributes.class.0 }}" target="_blank"><span class="{{ link.options.attributes.class.0 }}"></span></a></li>
+      {% endif %}      
+    {% endfor %}   
+   </ul>
+  </div>
+ </div>
+</nav>
+
+<!-- Main Menu Navigation Mobile -->
+<nav class="navbar navbar-default navbar-mb hidden-md hidden-lg">
+  <div class="container-fluid">
+   <div class="navbar-header">
+    {% if logo %}
+     <a href="{{ front_page }}" id="logo" class="navbar-brand" rel="home" title="{{ 'Home'|t }}">
+      <img src="{{ theme_base }}images/logo_barcel_mb.png" alt="{{ 'Home'|t }}" />
+     </a>
+    {% endif %}
+
+    <!-- Menu Button Mobile -->
+    <a href="#" class="openbtn-mb hidden-md hidden-lg" data-action="open">
+     <div class="nav-inner-menu">
+      <div class="nav-menu-mb">
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+      </div>
+     </div>
+    </a>
+   </div>
+  </div>
+</nav>
+
+<!-- Overlay Menu Desktop-->
+<div class="menu-overlay hidden-xs hidden-sm"></div>
+<div id="overlay-menu" class="overlay close hidden-xs hidden-sm">
+ <div class="main-menu-content">
+  <div class="main-menu">
+   <a href="{{ front_page }}" id="logo" class="navbar-brand" rel="home" title="{{ 'Home'|t }}">
+    <img src="{{ logo }}" alt="{{ 'Home'|t }}" />
+   </a>
+
+   <div class="menu-content ">
+   {% set main_menu = menu_load_links('main-menu') %} 
+    {% for menu, link in main_menu %}
+     {% if link.hidden == 1%}{% set continue= true %}
+     <a href="{{ link.link_path }}" class="menu-link" data-link="{{ link.options.attributes.class.0 }}">{{ link.link_title }}</a>
+    {% endfor %}    
+   </div>   
+  </div>
+ </div>
+ <div class="main-footer-content">
+  <div class="legales-links">
+  {% set legales_menu = menu_load_links('menu-legales') %}     
+   <ul class="menu-legales">
+    {% for menu, link in legales_menu %}
+     {% if link.hidden == 1 %}{% set continue = true %}
+     {% set btn_class = link.link_title == "Información nutrimental" ? "info-nutritional-btn" : "" %}
+     <li><a href="{{ link.link_path }}" class="{{ link.options.attributes.class.0 }}{{ btn_class }}" data-link="{{ link.options.item_attributes.class }}">{{ link.link_title }}</a></li>
+    {% endfor %}
+   </ul>
+  </div>
+ </div>
+</div>
+
+<!-- Overlay Menu Mobile-->
+<div id="overlay-menu-mb" class="overlay-mb close hidden-md hidden-lg">
+ <div class="main-menu-content">
+  <div class="main-menu">
+   {% if logo %}
+    <a href="{{ front_page }}" id="logo-mb" class="navbar-brand" rel="home" title="{{ 'Home'|t }}">
+     <img src="{{ theme_base }}images/logo_barcel_mb.png" alt="{{ 'Home'|t }}" />
+    </a>
+   {% endif %}
+
+   <div class="menu-content ">
+   {% set main_menu = menu_load_links('main-menu') %} 
+    {% for menu, link in main_menu %}
+     {% if link.hidden == 1 %}{% set continue = true %}
+     <a href="{{ link.link_path }}" class="menu-link" data-link="{{ link.options.attributes.class.0 }}">{{ link.link_title }}</a>
+    {% endfor %}
+
+    <ul class="social-media-list">
+     {% set social_menu = menu_load_links('menu-redes-sociales') %}   
+     {% for menu, link in social_menu %}
+      {% if link.hidden == 1 or link.link_title == "Contacto" %}{% set continue = true %}
+      <li><a href="{{ link.link_path }}" class="{{ link.options.item_attributes.class }}" data-link="{{ link.options.attributes.class.0 }}" target="_blank"><span class="{{ link.options.attributes.class.0 }}"></span></a></li>       
+     {% endfor %}   
+     </ul>    
+   </div>   
+  </div>
+ </div>
+ <div class="main-footer-content">
+  <div class="legales-links">
+   {% set legales_menu = menu_load_links('menu-legales') %}    
+   <ul class="menu-legales">
+    <li><a href="{{ base_url }}/contacto" class="social-link" data-link="contacto">Contacto</a></li>
+    {% for menu, link in legales_menu %}
+     {% if link.hidden == 1%}{% set continue = true %}
+     {% set btn_class = link.link_title == "Información nutrimental" ? "info-nutritional-btn" : "" %}
+     <li><a href="{{ link.link_path }}" class="{{ link.options.attributes.class.0 }}{{ btn_class }}" data-link="{{ link.options.item_attributes.class }}">{{ link.link_title }}</a></li>
+    {% endfor %}
+   </ul>
+  </div>
+ </div>
+</div>
+
+<!-- Overlay Menu Nutrimental Desktop-->
+<div id="overlay-nutritional-menu" class="overlay close">
+ <div class="nutritional-menu-content">
+  <a href="#" class="btn-close">&times;</a>
+  <div class="floating arrow-down"></div>
+
+  <div class="nutritional-menu">
+   <a href="{{ front_page }}" id="logo" class="navbar-brand" rel="home" title="{{ 'Home'|t }}">
+    <img src="{{ logo }}" alt="{{ 'Home'|t }}" />
+   </a>
+
+   <div class="menu-content">
+    <div class="menu-head">
+     <h2>Información</h2>
+     <h3>Nutrimental</h3>
+    </div>    
+    <ul id="nutritional-accordion" class="list-nutritional">
+     {% set nutritional_menu = menu_load_links('menu-menu-productos') %}     
+     {% for menu, link in nutritional_menu %}
+      {% if link.hidden == 1 %}{% set continue = true %}
+      {% if link.has_children == 1 %}
+       
+      {% set  menu_id = link.mlid %}
+      {% set  menu_link = link.link_title == 'Chips' ? 'Chip´s' : link.link_title %}      
+       
+
+       <li class="sub-menu">
+         <a href="#">
+          <span>{{ menu_link }}</span><i class="arrow pull-right"></i>
+         </a>
+         <ul>
+          {% for submenu, sublink in nutritional_menu %}
+           {% if sublink.hidden == 1 %}{% set continue = true %}
+           
+            {% set tid = sublink.link_path |split('/') %}
+            {% set tax = taxonomy_term_load(tid.2) %}
+            {% set node_url = if tax.field_link_nutrimental'und' is defined ? tax.field_link_nutrimental'und'.0.value : "node/3" %}         
+           
+           {% if sublink.has_children == 0 and sublink.plid == menu_id %}
+            <li><a href="{{ node_url }}" class="info-link">{{ sublink.link_title }}</a></li>
+           {% endif %}
+          {% endfor %}
+         </ul>
+       </li>
+      {% endif %} 
+     {% endfor %}    
+   </div>   
+  </div>
+ </div>
+</div>
+
+<!-- Menu Navigation Lado B -->
+<nav class="navbar navbar-default navbar-lado-b">
+ <div class="container-fluid">
+  <div class="navbar-header">
+   <a class="navbar-brand" href="{{ base_url }}/el-lado-b">
+    <img src="{{ theme_base }}images/logo_lado_b.png" class="img-responsive logo-lado-b">
+   </a>
+  </div>
+
+  <!-- Menu Button Mobile -->
+  <a href="#" class="search-mb hidden-md hidden-lg" data-action="open"><span class="ico-search-mb"></span></a>
+
+  <a href="#" class="openbtn-lado-mb hidden-md hidden-lg" data-action="open">
+   <div class="nav-inner-menu">
+    <div class="nav-menu-mb">
+     <span></span>
+     <span></span>
+     <span></span>
+     <span></span>
+    </div>
+   </div>
+  </a>
+
+  <div class="region region-navigation">
+    <input type="text" id="autocomplete-lado-b" name="autocomplete">
+    <div class="autocomplete-items"></div>
+  </div>
+
+  <div id="navbar-lado-b" class="navbar-collapse collapse hidden-xs hidden-sm">
+   <ul class="nav navbar-nav navbar-left nav-lado-b">
+     {% set lado_b_menu = menu_load_links('menu-lado-b') %} 
+    {% for menu, link in lado_b_menu %}
+     {% if link.hidden == 1 %}{% set continue = true %}
+     
+       {% set title = link.link_title %}
+    {% switch title %}
+        {% case 'Lado B' %}
+     
+         <li><a href="{{ base_url~'/'~link.link_path }}" class="link-lado-b"><span>{{ link.link_title }}</span></a></li>
+        
+         
+
+       {% case 'Ir al Sitio Barcel' %}
+      
+         <li><a href="{{ base_url }}" class="btn btn-default link-btn">{{ link.link_title }}</a></li>
+              
+        {% defaul %}
+          
+         {% if title == "Música" %}{% set class = "music" %}{% else if title == "Gaming" %}{% set class = "gaming" %}{% else %}{% set class = "pop" %}{% endif %}
+     
+         <li><a href="{{ link.link_path }}" class="link-menu link-menu-b" data-menu="{{ class }}"><span class="rectangle {{ class }}"></span>{{ link.link_title }}</a></li>
+              
+       {% endswitch %}
+          
+    {% endfor %}
+   </ul>
+  </div>
+ </div>
+</nav>
+
+<!-- Overlay Menus Lado B Desktop-->
+
+  {% set lado_b_menu = menu_load_links('menu-lado-b') %}
+  {% for menu, link in lado_b_menu %}
+ 
+  {% if link.hidden == 1 or link.options.item_attributes.id is empty %} {% set continue = true %} 
+  
+    {% set id = link.options.item_attributes.id %}
+    {% set class = link.options.item_attributes.class %}
+    {% set tid = link.options.item_attributes.style %}
+
+    {% set image_menu = file_load(link.options.content.image) %}
+    {% set image_menu = file_create_url(image_menu.uri %})
+
+    /*** Get content by categorie ***/
+    {% set query = EntityFieldQuery() %}
+    {% set query.entityCondition('entity_type', 'node')
+          .entityCondition('bundle', 'lado_b')
+          .propertyCondition('status', NODE_PUBLISHED       
+          .fieldCondition('field_categoria', 'tid', tid, '=')                
+          .fieldCondition('field_principal_home', 'value', '0', '=')
+          .fieldCondition('field_destacada', 'value', '0', '=')
+          .propertyOrderBy('created', 'DESC')
+          .range(0, 3)) %}
+    {% set contents = query.execute() %}
+    {% set contents = contents.node %}
+   
+   <div id="{{ id }}" class="overlay-lado-b {{ class }}close hidden-xs hidden-sm" style="background-image: url({{ image_menu }})">
+    <div class="lado-b-menu-content">
+     <div class="main-menu">
+      <div class="menu-content">
+       <h1 class="menu-title">{{ link.link_title }}</h1>
+
+        <ul class="menu-list-notes">
+         
+           {% for content, nid in contents %}
+           {% set nid =  content.nid %}       
+           {% set node = node_load(nid) %}
+           {% set path = drupal_get_path_alias('node/'~nid) %}
+           {% set title = node.title %}
+         
+          <li><a href="{{ base_url~'/'~path }}}" class="list-note-link">{{ title }}}</a></li>
+        {% endfor %}
+        </ul>
+      
+       <a href="{{ base_url~'/'~link.link_path }}" class="menu-link btn-note-link">Ver todas las notas <span></span></a>
+      </div>   
+     </div>
+    </div>
+   </div>
+{% endfor %}
+
+<!-- Overlay Menus Lado B Mobile-->
+<div id="overlay-menu-lado-b-mb" class="overlay-mb close hidden-md hidden-lg">
+ <div class="main-menu-content">
+  <div class="main-menu">
+   <a class="navbar-brand" href="{{ base_url }}/el-lado-b">
+    <img src="{{ theme_base }}images/logo_lado_b.png" class="img-responsive logo-lado-b">
+   </a>
+
+   <div class="menu-content ">    
+    {% set lado_b_menu = menu_load_links('menu-lado-b') %}
+    {% for menu, link in lado_b_menu %}
+     {% if link.hidden == 1 %}{% set continue = true %}
+     
+       {% set title = link.link_title %}
+      {% switch title %}
+         {% case 'Lado B' %}
+     
+         <a href="{{ base_url~'/'~link.link_path }}" class="link-lado-b"><span>{{ link.link_title }}</span></a>
+        
+         
+
+        {% case 'Ir la Sitio Barcel' %}
+         
+         
+        
+          
+         {% if title == "Música"%}{% set class = "music"{% else if title == "Gaming" %}{% set class = "gaming" %}{% else %}{% set class = "pop" %}{% endif %}
+     
+         <a href="{{ base_url~'/'~link.link_path }}" class="link-menu link-menu-b list-note-link" data-menu="{{ class }}"><span class="rectangle {{ class }}"></span>{{ link.link_title }}</a>
+              
+       {% endswitch %}
+     
+    {% endfor %}
+
+    <ul class="social-media-list">
+     {% set social_menu = menu_load_links('menu-redes-sociales') %}   
+     {% for menu, link in social_menu %}
+      {% if link.hidden == 1 or link.link_title == "Contacto"%}{% set continue = true %}
+      <li><a href="{{ link.link_path }}" class="{{ link.options.item_attributes.class }}" target="_blank"><span class="{{ link.options.attributes.class.0 }}"></span></a></li>       
+     {% endfor %}   
+     </ul>
+
+     <a href="{{ base_url }}" class="btn btn-default link-btn btn-note-link">Ir al sitio Barcel</a>    
+   </div>   
+  </div>
+ </div>
+</div>
+
+
+<!-- Main Content -->
+<div class="barcel-main-container">
+ <!-- Menu Button Desktop -->
+ <a href="#" class="openbtn hidden-xs hidden-sm" data-action="open">
+  <div class="nav-inner-menu">
+   <div class="nav-menu">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+   </div>
+  </div>
+ </a>
+
+ <!-- Page Content -->
+ {{ page.content }}
+</div>
+
+<!-- Mobile disclaimer -->
+<div id="disclaimer"></div>
+
+<!-- Modal Nutrimental Information -->
+<div class="remodal remodal-nutritional" data-remodal-id="nutritional-modal">
+ <button data-remodal-action="close" class="remodal-close"></button>
+ 
+ <div class="modal-content">
+  <div class="modal-content-row">
+   <div class="col-center">
+     <h1 class="title"></h1>
+
+     <div class="table-nutritional-scroll">
+      <div class="table-content"></div>
+      <div class="information-content"></div>
+     </div>
+   </div>
+  </div>
+ </div>
+</div>
+
+<!-- Footer Lado B Content -->
+<footer class="footer footer-lado-b">
+ <div class="container">
+  <p class="text-footer pull-left">Grupo Bimbo 2019 Ⓒ Todos los Derechos Reservados el lado b | <a href="{{ base_url~'/aviso-de-privacidad' }}">Aviso de privacidad</a></p>
+
+  <ul class="nav navbar-nav navbar-right hidden-xs hidden-sm">
+   <li class="span-text"><span>Síguenos</span></li>
+   {% set social_menu = menu_load_links('menu-redes-sociales') %}   
+   {% for menu, link in social_menu %}
+     {% if link.hidden == 1 or link.link_title == "Contacto"%}{% set continue = true %}
+      <li><a href="{{ link.link_path }}" class="{{ link.options.item_attributes.class }}" target="_blank"><span class="{{ link.options.attributes.class.0 }}"></span></a></li>
+   {% endfor %}   
+  </ul>
+ </div>
+</footer>
+
+<!-- Footer Content -->
+<footer class="footer footer-site">
+ <div class="container">
+  <p class="text-footer">Grupo Bimbo 2020 Ⓒ Todos los Derechos Reservados.</p>
+ </div>
+</footer>
+
+<!-- Footer Content -->
+<footer class="footer footer-promo">
+ <div class="container">
+  <a href="#" class="text-footer text-uppercase">Términos y condiciones</a>
+ </div>
+</footer>

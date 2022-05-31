@@ -1,0 +1,63 @@
+{{base_url}}   
+
+  {% set path = current_path() %}
+
+
+<!DOCTYPE html>
+<html{{ html_attributes }}{{ rdf_namespaces }}>
+<head>
+ <link rel="profile" href="{{ grddl_profile }}" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ {{ head }}
+ <title>{{ head_title }}</title>
+ {{ styles }}
+ <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700|Teko:400,500,600" rel="stylesheet">
+
+ <!-- HTML5 element support for IE6-8 -->
+ <!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+ <![endif]-->
+ {{ scripts }}
+
+ <script type="text/javascript">
+   function isMobileDevice() {
+     return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+   };
+
+   var isMobile = isMobileDevice();
+   var path = "{{ path }}";
+   var base_url = "{{ base_url }}";
+
+   if(isMobile){
+    window.addEventListener("orientationchange", function() {     
+     var orientation = window.orientation;
+
+     if(orientation == -90 || orientation == 90){
+      document.getElementById("disclaimer").classList.add("active");;
+     }else{
+      document.getElementById("disclaimer").classList.remove("active");;
+     }
+
+    }, false);
+   }
+ </script>
+
+ <!-- Global site tag (gtag.js) - Google Analytics -->
+ <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-156877035-1"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-156877035-1');
+ </script>-->
+</head>
+<body{{ body_attributes }}>
+ <div id="skip-link">
+  <a href="#main-content" class="element-invisible element-focusable">{{ 'Skip to main content'|t }}</a>
+ </div>
+ {{ page_top }}
+ {{ page }}
+ {{ page_bottom }}
+</body>
+</html>

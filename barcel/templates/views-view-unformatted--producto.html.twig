@@ -1,0 +1,155 @@
+{{base_url}}  
+	
+	{% set theme_url = drupal_get_path('theme','barcel') %}
+	{% set theme_base = base_url~'/'~theme_url~'/' %}
+
+	/*** Get the bran tid ***/
+	{% set nid = view.render_field('nid',0) %}
+  {% set node = node_load(nid) %}
+  {% set tid = node.field_marca'und'.0.tid %}
+
+  /*** Main Content product ***/
+	{% set query = EntityFieldQuery() %}
+	{% query.entityCondition('entity_type', 'node')
+				   .entityCondition('bundle', 'productos')
+				   .propertyCondition('status', NODE_PUBLISHED	   
+				   .fieldCondition('field_marca', 'tid', tid, '=')					  
+				   .fieldCondition('field_principal', 'value', '1', '='))	%}				  
+	{% set main = query.execute() %}	
+	{% set main = main.node %}	
+
+	/*** Brand Campaings ***/
+	{% set query = EntityFieldQuery() %}
+	{% query.entityCondition('entity_type', 'node')
+				   .entityCondition('bundle', 'campa_a')
+				   .propertyCondition('status', NODE_PUBLISHED	   
+				   .fieldCondition('field_marca_camp', 'tid', tid, '=')) %}				  
+	{% set campaing = query.execute() %}	
+	{% set campaing = campaing.node %}	
+
+	/*** Next Barnd Link ***/
+	{% set brands = menu_load_links('menu-marcas') %}
+	{% set brand = taxonomy_term_load(tid) %}
+	{% set brand = brand.name %}
+	
+	{% for key, element in brands %}				
+		{% if brand == element.link_title%}	
+			{% set next_ = if brands[key]+1 is defined and brands[key]+1.hidden == 0 ? key+1 : key+2 %}
+
+			{% if brands[next_] is defined%}
+				{% set next_link = base_url~'/'~" ", "-", brands[next_].link_title|replace({ : })|lower %}
+			{% else %}
+				{% set next_link = base_url~'/marcas' %}
+			{% endif %}
+
+			 %}			
+		{% endif %}	
+	{% endfor %}	
+
+
+<section id="products-section" class="section-container">
+	<div class="products-container">
+		<div class="floating arrow-down"></div>	
+
+		<!-- List products -->
+		<ul class="list-slugs-product hide hidden-xs hidden-sm">
+			
+				{% for key, value in rows %}
+					{% set nid = view.render_field('nid',key) %}
+          {% set node = node_load(nid) %}	          
+          {% set slug = node.field_slug_producto'und'.0.value %}
+          {% set slug_class = if node.field_slug_class'und'.0.value is defined ? node.field_slug_class'und'.0.value : "" %}
+          {% set className = node.field_slug_producto'und'.0.value == "Chipotle/Limón" ? "chipotle-limon" : " ", "-", node.field_slug_producto'und'.0.value|lower|replace({ : }) %}
+          
+			
+				<li class="{{ className~' '~slug_class }}"><b>{{ slug }}</b></li>
+			{% endfor %}
+		</ul>
+		<!-- END List products -->	
+
+		<div id="fullpage-products">
+			{% if main  is not empty %}
+		  	{% for node, nid in main %}{% set nid = node.nid} {% endfor %}
+		  	{% set node = node_load(nid) %}
+        
+        {% set title = node.title %}         
+        {% set color = node.field_color_fondo'und'.0.value %}			        
+        {% set image_main = file_load(node.field_imagen_main'und'.0.fid) %}
+        {% set image_main = file_create_url(image_main.uri %})
+        {% set image_botana = file_load(node.field_imagen_botana'und'.0.fid) %}
+        {% set image_botana = file_create_url(image_botana.uri %})			        
+			%}
+				<div class="section" style="background-color: {{ color }}};">
+		  		<div class="row row-main">
+		  			<div class="col-xs-12 col-main">	  				 
+							<div class="scene">         
+		            <div class="scene-packing" data-depth="0.30">
+		              <img src="{{ image_main }}" class="packing img-responsive" />
+		            </div>
+		            <div class="scene-product" data-depth-x="0.30">
+		              <img src="{{ image_botana }}" class="product img-responsive" />
+		            </div>
+		          </div>	          
+		  			</div>
+		  		</div>
+			  </div>
+		  {% endif %}
+
+		  {% ifcampaing is not empty %}
+		  	{% for node, nid in campaing %}{% set nid = node.nid} {% endfor %}
+		  	{% set node = node_load(nid) %}
+        
+        {% set title = node.title%}          
+        {% set color = node.field_color_de_fondo'und'.0.value %}
+        {% set descripcion = node.field_descripcion_camp'und'.0.value %}
+        {% set link = node.field_link_campania'und'.0.value %}
+        {% set image_banner = file_load(node.field_imagen_campania'und'.0.fid) %}
+        {% set image_banner = file_create_url(image_banner.uri %})
+
+        {% set brand_tax = node.field_marca_camp'und'.0.tid %}
+        {% set brand_tax = taxonomy_term_load(brand_tax) %}
+        {% set brand = brand_tax.name == 'Chips' ? 'Chip´s' : brand_tax.name %}
+			  <div class="section section-campaing" style="background-color: {{ color }}};">
+		  		<div class="row row-product">
+		  			<div class="col-xs-12 col-product">
+		  				<a href="{{ link }}" class="link-campania" target="_blank">
+		  					<img src="{{ image_banner }}" class="img-responsive banner-campaing">
+		  				</a>
+		  				<h2 class="head-campaing">{{ brand }}<br><small>{{ title }}</small></h2>		
+		  			</div>
+		  		</div>
+			  </div>
+			{% endif %}			
+
+			
+				{% set i = 1 %}
+				{% set elements = rows|length %}
+				{% for key, value in rows %}
+					{% set nid = view.render_field('nid',key) %}
+          {% set node = node_load(nid) %}
+          
+          {% set id = node.field_slug_producto'und'.0.value == "Chipotle/Limón" ? "chipotle-limon" : node.field_slug_producto'und'.0.value|lower %}
+          {% set slug = node.field_slug_producto'und'.0.value %}
+          {% set color = node.field_color_fondo'und'.0.value %}
+          {% set color_slug = if node.field_slug_color'und'.0.value is defined ? node.field_slug_color'und'.0.value : "#F6DB36" %}
+          {% set descripcion = node.field_descripcion_prod'und'.0.value %}
+          {% set image_prod = file_load(node.field_imagen_empaque'und'.0.fid) %}
+          {% set image_prod = file_create_url(image_prod.uri %})          
+							
+		  	<div id="{{ id }}" class="section package" style="background-color: {{ color }};">
+		  		<div class="row row-product">
+		  			<div class="col-xs-12 col-product text-center">		  				
+		  				<img src="{{ image_prod }}" class="img-responsive package-product package-{{ id }}">
+		  				<h2 class="head-product text-center hidden-md hidden-lg" style="color: {{ color_slug }}">{{ slug }}</h2>
+		  				<h3 class="prod-description text-center">{{ descripcion }}</h3>
+
+		  				{% ifi == elements %}
+		  					<a href="{{ next_link }}" class="button-primary btn btn-default btn-product text-uppercase">¿Otra botanita?</a>
+		  				{% endif %}
+		  			</div>
+		  		</div>
+		  	</div>		  
+		  %}{% endfor %}		  
+		</div>
+	</div>
+</section>
