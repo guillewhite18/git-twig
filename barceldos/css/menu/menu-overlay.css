@@ -1,0 +1,897 @@
+.openbtn {
+    top: 50%;
+    left: 4%;
+    position: fixed;
+    z-index: 10; 
+}
+
+.openbtn .nav-inner-menu {
+    width: 70px;
+    height: 70px;
+    border-radius: 35px;
+    padding: 0%;
+    position: absolute;
+}
+
+.openbtn .nav-inner-menu .nav-menu {
+    width: 45px;
+    height: 40px;
+    position: relative;
+    margin: 25% auto;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+    cursor: pointer; 
+}
+
+.openbtn .nav-inner-menu .nav-menu span {
+    display: block;
+    position: absolute;
+    height: 6px;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 15px;
+    opacity: 1;
+    left: 0;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: 0.25s ease-in-out;
+    -moz-transition: 0.25s ease-in-out;
+    -o-transition: 0.25s ease-in-out;
+    transition: 0.25s ease-in-out; 
+}
+
+.openbtn .nav-inner-menu .nav-menu span:nth-child(1) {
+    top: 2px; 
+}
+
+.openbtn .nav-inner-menu .nav-menu span:nth-child(2),
+.openbtn .nav-inner-menu .nav-menu span:nth-child(3) {
+    top: 13px; 
+}
+
+.openbtn .nav-inner-menu .nav-menu span:nth-child(4) {
+    top: 25px;
+    width: 80%; 
+}
+
+.openbtn .nav-inner-menu .nav-menu.open span:nth-child(1) {
+    top: 18px;
+    left: 50%;
+    width: 0%; 
+}
+
+.openbtn .nav-inner-menu .nav-menu.open span:nth-child(2) {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg); 
+}
+
+.openbtn .nav-inner-menu .nav-menu.open span:nth-child(3) {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg); 
+}
+
+.openbtn .nav-inner-menu .nav-menu.open span:nth-child(4) {
+    top: 18px;
+    left: 50%;
+    width: 0%; 
+}
+
+.menu-overlay{
+    position: fixed;
+    z-index: 2;
+    top: -5000px;
+    right: -5000px;
+    bottom: -5000px;
+    left: -5000px;
+    display: none;
+    background-color: rgba(2, 2, 2, 0.8);
+}
+
+.menu-overlay.menu-is-opened{
+    display: block;
+}
+
+.overlay{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    overflow-x: hidden;
+    transition: all 0.5s ease;
+    z-index: 10;
+}
+
+.overlay.open {
+    transform: translateX(0%);
+}
+
+.overlay.close {
+    transform: translateX(-100%);
+}
+
+.overlay .main-menu-content {
+    width: 23%;
+    height: 100%;
+    position: relative;
+    display: table;
+    background-color: #0056A3;
+}
+
+.overlay .main-menu-content .main-menu {
+    width: 20%;
+    height: 100%;
+    text-align: left;
+    position: relative;
+    display: table-cell;
+    background-color: #0056A3;
+    z-index: 1;
+}
+
+.overlay .main-menu-content .main-menu:after {
+    content: " ";
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background: #0056A3;
+    transform-origin: bottom left;
+    -ms-transform: skew(-8deg, 0deg);
+    -webkit-transform: skew(-8deg, 0deg);
+    transform: skew(-8deg, 0deg);
+}
+
+.overlay .main-menu-content .main-menu #logo{
+    margin-left: 15%;
+}
+
+.overlay .main-menu-content .main-menu #logo img{
+    width: 50%;
+    margin: 10% auto 0;
+}
+
+.overlay .main-menu-content .main-menu .menu-content{
+    top: 42%;    
+    left: 30%;
+    width: 70%;
+    height: 30%;    
+    position: absolute;
+    display: block;  
+    text-align: right;  
+} 
+
+.overlay .main-menu-content .main-menu .menu-content .menu-link{
+    color: #ffffff;
+    font-size: 2.3vw;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: block;
+    margin: 0 auto 8%;
+}   
+
+.overlay .main-footer-content{
+    width: 23%;
+    height: 20%;
+    bottom: 3%;
+    position: absolute;
+    display: table;
+    z-index: 1;
+}
+
+.overlay .main-footer-content .legales-links{
+    display: flex;
+    justify-content: center; 
+    margin: 10% auto 0;   
+}
+
+.overlay .main-footer-content .legales-links .menu-legales li{
+    list-style: none;
+}
+
+.overlay .main-footer-content .legales-links .menu-legales li a{
+    color: #FFFFFF;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    line-height: 35px;
+    text-align: left;
+    text-decoration: underline;    
+}
+
+.overlay .nutritional-menu-content{
+    width: 40%;
+    height: 100%;
+    max-height: 100vh;
+    position: relative;
+    display: table;
+    background-color: #eb1536;
+}
+
+.overlay .nutritional-menu-content .btn-close{      
+    top: 0;
+    right: 5%;
+    color: #ffffff;
+    font-size: 4vw;
+    position: absolute;
+    text-decoration: none;
+    z-index: 15;    
+}
+
+.overlay .nutritional-menu-content .nutritional-menu{
+    position: relative;
+    display: table-cell;
+    overflow: hidden;
+    pointer-events: all;
+}
+
+.overlay .nutritional-menu-content .nutritional-menu #logo{
+    margin-left: 10%;
+}
+
+.overlay .nutritional-menu-content .nutritional-menu #logo img{
+    width: 50%;
+    margin: 10% auto 0;
+}
+
+.overlay .nutritional-menu-content .arrow-down {    
+    right: 4%;
+    bottom: 5%;
+    width: 40px;    
+}
+
+.overlay .nutritional-menu-content .nutritional-menu .menu-content{
+    width: 70%;
+    float: right;
+}
+
+.overlay .nutritional-menu-content .nutritional-menu .menu-content .menu-head{
+    margin-left: 4%;
+}
+
+.overlay .nutritional-menu-content .nutritional-menu .menu-content .menu-head h2{
+    font-size: 2.5vw;
+    margin-bottom: 0px;
+}
+
+.overlay .nutritional-menu-content .nutritional-menu .menu-content .menu-head h3{
+    font-size: 1.5vw;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.overlay .nutritional-menu-content .nutritional-menu .menu-content #nutritional-accordion{
+    width: 80%;
+    margin: 5% auto 0 0;
+    -webkit-padding-start: 0px;
+}
+
+.overlay .nutritional-menu-content .nutritional-menu .menu-content #nutritional-accordion .sub-menu{
+    list-style-type: none;
+    border-top: 1px solid rgba(10, 10, 10, 0.1);
+}
+
+.overlay .nutritional-menu-content .nutritional-menu .menu-content #nutritional-accordion .sub-menu.active {
+    background-color: white;
+    transition: background-color 0.2s ease-in;
+}
+
+.overlay .nutritional-menu-content .nutritional-menu .menu-content #nutritional-accordion .sub-menu.active > a {
+    color: black;
+}
+
+.overlay .nutritional-menu-content .nutritional-menu .menu-content #nutritional-accordion .sub-menu.active a > i{ 
+    background-image: url(../../images/informacion-nutrimental/flecha-info-nutrimental-2.png);    
+}
+
+.overlay .nutritional-menu-content .nutritional-menu .menu-content #nutritional-accordion .sub-menu a{  
+    color: white;
+    font-size: 1.2vw;
+    text-decoration: none;
+    display: block;
+    padding: 18px 0 18px 25px;
+}
+
+.overlay .nutritional-menu-content .nutritional-menu .menu-content #nutritional-accordion .sub-menu a > i{ 
+    width: 20px;
+    height: 20px;
+    float: right;
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: middle;
+    background-image: url(../../images/informacion-nutrimental/flecha-info-nutrimental.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.overlay .nutritional-menu-content .nutritional-menu .menu-content #nutritional-accordion .sub-menu ul{
+    display: none;
+    -webkit-padding-start: 0px;
+    padding-left: 0;
+}  
+
+.overlay .nutritional-menu-content .nutritional-menu .menu-content #nutritional-accordion .sub-menu ul li{    
+    list-style-type: none;
+    background-color: #AB1028;
+}  
+
+.overlay .nutritional-menu-content .nutritional-menu .menu-content #nutritional-accordion .sub-menu ul li > a{    
+    font-size: 1vw;
+    text-decoration: none;
+    display: block;
+    padding: 13px 0 13px 55px;
+}
+
+/*** Overlay Lado B Menu ***/
+.overlay-lado-b{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    overflow-x: hidden;
+    transition: all 0.5s ease;
+    z-index: 10;
+    background-size: cover;
+}
+
+.overlay-lado-b.open {
+    transform: translateX(0%);
+}
+
+.overlay-lado-b.close {
+    transform: translateX(100%);
+}
+
+.overlay-lado-b .lado-b-menu-content {
+    width: 35%;
+    height: 100%;
+    position: relative;
+    display: table;
+    background-color: #0056A3;
+    float: right;
+}
+
+.overlay-lado-b .lado-b-menu-content .main-menu {
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    position: relative;
+    display: table-cell;
+    background-color: #0056A3;
+    z-index: 1;
+}
+
+.overlay-lado-b .lado-b-menu-content .main-menu:after {
+    content: " ";
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background: #0056A3;
+    transform-origin: bottom right;
+    -ms-transform: skew(8deg, 0deg);
+    -webkit-transform: skew(8deg, 0deg);
+    transform: skew(8deg, 0deg);
+} 
+
+.overlay-lado-b .lado-b-menu-content .main-menu .menu-content .menu-title{    
+    top: 6vw;
+    right: 6vw;
+    position: absolute;
+    font-family: 'Teko', sans-serif;
+    font-size: 5vw;
+    letter-spacing: 3px;
+    line-height: 120px;
+}
+
+.overlay-lado-b .lado-b-menu-content .main-menu .menu-content .menu-list-notes{
+    top: 20vw;
+    width: 100%;
+    position: absolute;    
+}
+
+.overlay-lado-b .lado-b-menu-content .main-menu .menu-content .menu-list-notes li{
+    list-style: none;
+    margin-bottom: 5%;
+    padding: 7px 15px;
+    transition: background 0.3s ease-in;    
+}
+
+.overlay-lado-b .lado-b-menu-content .main-menu .menu-content .menu-list-notes li a{
+    color: #ffffff;
+    font-size: 1vw;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.overlay-lado-b .lado-b-menu-content .main-menu .menu-content .menu-list-notes li:hover{
+    background-color: #fff;    
+}
+
+.overlay-lado-b .lado-b-menu-content .main-menu .menu-content .menu-list-notes li:hover a{
+    color: #0056A3;
+    text-decoration: none;
+}
+
+.overlay-lado-b .lado-b-menu-content .main-menu .menu-content .menu-link{
+    left: 3vw;
+    bottom: 12vw;      
+    position: absolute;
+    color: #ffffff;
+    font-size: 1vw;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+}
+
+.overlay-lado-b .lado-b-menu-content .main-menu .menu-content .menu-link span{
+    width: 12px;
+    height: 12px;
+    margin-left: 5px;
+    display: inline-block;    
+    vertical-align: middle;
+    background-image: url(../../images/arrow-menu.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.overlay-lado-b.music .lado-b-menu-content {
+    background-color: #E1251B;
+}
+
+.overlay-lado-b.music .lado-b-menu-content .main-menu {
+    background-color: #E1251B;
+}
+
+.overlay-lado-b.music .lado-b-menu-content .main-menu:after {    
+    background: #E1251B;
+}
+
+.overlay-lado-b.gaming .lado-b-menu-content {
+    background-color: #00BFA5;
+}
+
+.overlay-lado-b.gaming .lado-b-menu-content .main-menu {
+    background-color: #00BFA5;
+}
+
+.overlay-lado-b.gaming .lado-b-menu-content .main-menu:after {    
+    background: #00BFA5;
+} 
+
+.overlay-lado-b.music .lado-b-menu-content .main-menu .menu-content .menu-list-notes li:hover a{
+    color: #E1251B;
+}
+
+.overlay-lado-b.gaming .lado-b-menu-content .main-menu .menu-content .menu-list-notes li:hover a{
+    color: #00BFA5;
+}
+
+/*** Mobile Overlay Menu ***/ 
+.overlay-mb{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    overflow-x: hidden;
+    transition: all 0.5s ease;
+    z-index: 5;
+}
+
+.overlay-mb.open {
+    transform: translateX(0%);
+}
+
+.overlay-mb.close {
+    transform: translateX(-100%);
+}
+
+.overlay-mb .main-menu-content {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: table;
+    background-color: #0056A3;
+}
+
+.overlay-mb .main-menu-content .main-menu {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    position: relative;
+    display: table-cell;
+    background-color: #0056A3;
+    z-index: 1;
+}
+
+.overlay-mb .main-menu-content .main-menu:after {
+    content: " ";
+    top: 0;
+    left: 0;
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;                
+    z-index: -1;
+    background: #0056A3;                
+}
+
+.overlay-mb .main-menu-content .main-menu #logo{
+    margin-left: 15%;
+}
+
+.overlay-mb .main-menu-content .main-menu #logo-mb img{
+    width: 35vw;
+}
+
+.overlay-mb .main-menu-content .main-menu .menu-content{
+    top: 15%;
+    left: 0%;
+    width: 100%;
+    height: 30%;    
+    position: absolute;
+    display: block;  
+    text-align: center;  
+} 
+
+.overlay-mb .main-menu-content .main-menu .menu-content .menu-link{
+    color: #ffffff;
+    font-size: 10vw;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: block;
+    margin: 0 auto 2%;
+}  
+
+.overlay-mb .main-menu-content .main-menu .menu-content .social-media-list{
+    -webkit-padding-start: 0px;
+}
+
+.overlay-mb .main-menu-content .main-menu .menu-content .social-media-list li{
+    margin-top: 8%;
+    margin-right: 2%;    
+    display: inline-block;
+}
+
+.overlay-mb .main-menu-content .main-menu .menu-content .social-media-list li a{
+    color: #ffffff;
+    padding: 10px 5px;
+}
+
+.overlay-mb .main-menu-content .main-menu .menu-content .social-media-list li span{
+     width: 45px;
+    height: 45px;
+    display: block;
+    transition: transform .5s ease;
+}
+
+.overlay-mb .main-menu-content .main-menu .menu-content .social-media-list li span.fb-ico{
+    background-image: url('../../images/social-media/icono_facebook.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.overlay-mb .main-menu-content .main-menu .menu-content .social-media-list li span.tw-ico{
+    background-image: url('../../images/social-media/icono_twitter.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.overlay-mb .main-menu-content .main-menu .menu-content .social-media-list li span.in-ico{
+    background-image: url('../../images/social-media/icono_instagram.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.overlay-mb .main-menu-content .main-menu .menu-content .social-media-list li span.yt-ico{
+    background-image: url('../../images/social-media/icono_youtube.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.overlay-mb .main-footer-content{
+    width: 100%;
+    height: 20%;
+    bottom: 3%;
+    position: absolute;
+    display: table;
+    z-index: 1;
+}
+
+.overlay-mb .main-footer-content .legales-links{
+    display: flex;
+    justify-content: center; 
+    margin: 10% auto 0;   
+}
+
+.overlay-mb .main-footer-content .menu-legales{
+  -webkit-padding-start: 0px;
+}
+
+.overlay-mb .main-footer-content .legales-links .menu-legales li{
+    list-style: none;
+    text-align: center;
+}
+
+.overlay-mb .main-footer-content .legales-links .menu-legales li a{
+    color: #FFFFFF;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    line-height: 35px;
+    text-align: center;
+    text-decoration: underline;    
+}
+
+#overlay-menu-lado-b-mb .main-menu-content{
+    background-color: #FFFFFF;
+}
+
+#overlay-menu-lado-b-mb .main-menu-content .main-menu{
+    background-color: #FFFFFF;
+}
+
+#overlay-menu-lado-b-mb .main-menu-content .main-menu:after {
+    background-color: #FFFFFF;              
+}
+
+#overlay-menu-lado-b-mb .main-menu-content .main-menu .navbar-brand .logo-lado-b{
+    width: 30vw;
+}
+
+#overlay-menu-lado-b-mb .main-menu-content .main-menu .link-menu-b{
+    color: #333333;    
+    display: block;
+    font-size: 10vw;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin: 4% auto;
+}
+
+#overlay-menu-lado-b-mb .main-menu-content .main-menu .link-menu-b .rectangle{
+    height: 25px;
+}
+
+#overlay-menu-lado-b-mb .main-menu-content .main-menu .link-lado-b{
+    color: #ffffff;
+    font-size: 10vw;    
+    text-decoration: none;
+    text-transform: uppercase;
+    display: block;
+    transform: skew(-5deg);    
+}
+
+#overlay-menu-lado-b-mb .main-menu-content .main-menu .link-lado-b span{  
+    padding: 4px 20px;
+    background-color: #E1251B;
+    transform: skew(5deg);
+}
+
+#overlay-menu-lado-b-mb .main-menu-content .main-menu .menu-content .social-media-list{
+    margin-bottom: 25px;
+}
+
+#overlay-menu-lado-b-mb .main-menu-content .main-menu .menu-content .social-media-list li span.fb-ico{
+    background-image: url('../../images/social-media/icono_facebook_2.png');
+}
+
+#overlay-menu-lado-b-mb .main-menu-content .main-menu .menu-content .social-media-list li span.tw-ico{
+    background-image: url('../../images/social-media/icono_twitter_2.png');
+}
+
+#overlay-menu-lado-b-mb .main-menu-content .main-menu .menu-content .social-media-list li span.in-ico{
+    background-image: url('../../images/social-media/icono_instagram_2.png');
+
+}
+
+#overlay-menu-lado-b-mb .main-menu-content .main-menu .menu-content .social-media-list li span.yt-ico{
+    background-image: url('../../images/social-media/icono_youtube_2.png');
+}
+
+#overlay-menu-lado-b-mb .main-menu-content .main-menu .menu-content .link-btn{
+    color: white;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 0px;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 8px 55px;
+    margin-top: 4px;
+    background-image: linear-gradient(90deg, #0056a3 0%, #e1251b 100%);
+    border-radius: 50px;
+    border: none;
+    background-size: 200% 100%;
+    box-shadow: 0 6px 13px 0 transparent;
+    moz-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+}
+
+/**** Media Query´s Styles ****/
+@media (min-width: 768px) {
+    .overlay-mb .main-menu-content .main-menu #logo-mb img{
+        width: 26vw;
+        margin-left: 15px;
+    }
+
+    .overlay-mb .main-menu-content .main-menu .menu-content .menu-link{
+        font-size: 9vw;
+    }
+
+    .overlay-mb .main-menu-content .main-menu .menu-content .social-media-list li{
+        margin-top: 7%;
+    }
+
+    .overlay-mb .main-footer-content .legales-links .menu-legales li a{
+        font-size: 22px;
+        line-height: 45px;
+    }
+
+    .overlay-mb .main-menu-content .main-menu .menu-content .social-media-list li span{
+        width: 55px;
+        height: 55px;
+    }
+
+    .footer.footer-site p{
+        font-size: 14px;
+    }
+
+    #overlay-menu-lado-b-mb .main-menu-content .main-menu .link-lado-b{
+        font-size: 7vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .overlay .nutritional-menu-content{
+        width: 100%;
+    }
+
+    .overlay .nutritional-menu-content .arrow-down{
+        right: 3%;
+        bottom: 5%;
+        width: 30px;
+    }
+
+    .overlay .nutritional-menu-content .nutritional-menu #logo{
+        margin-left: 0%;
+    }
+
+    .overlay .nutritional-menu-content .nutritional-menu #logo img{
+        width: 40%;
+        margin: 5% auto 0 0;
+    }
+
+    .overlay .nutritional-menu-content .nutritional-menu .menu-content{
+        width: 90%;
+    }
+
+    .overlay .nutritional-menu-content .nutritional-menu .menu-content .menu-head{
+        text-align: center;
+    }
+
+    .overlay .nutritional-menu-content .nutritional-menu .menu-content .menu-head h2{
+        font-size: 10.5vw;
+        margin-bottom: 0px;
+        margin-top: 0px;
+    }
+
+    .overlay .nutritional-menu-content .nutritional-menu .menu-content .menu-head h3{
+        font-size: 4.5vw;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .overlay .nutritional-menu-content .nutritional-menu .menu-content #nutritional-accordion{
+        width: 85%;
+        margin: 5% auto 0 0;
+        -webkit-padding-start: 0px;
+    }
+
+    .overlay .nutritional-menu-content .nutritional-menu .menu-content #nutritional-accordion .sub-menu a{
+        font-size: 4.5vw;
+    }
+
+    .overlay .nutritional-menu-content .nutritional-menu .menu-content #nutritional-accordion .sub-menu ul li > a{
+        font-size: 4vw;
+    }    
+}
+
+@media (max-width: 420px) {
+    .overlay .nutritional-menu-content{
+        width: 100%;
+    }
+
+    .overlay .nutritional-menu-content .arrow-down{
+        right: 3%;
+        bottom: 5%;
+        width: 30px;
+    }
+
+    .overlay .nutritional-menu-content .btn-close{
+        font-size: 15vw;
+    }
+
+    .overlay .nutritional-menu-content .nutritional-menu #logo{
+        margin-left: 0%;
+    }
+
+    .overlay .nutritional-menu-content .nutritional-menu #logo img{
+        width: 40%;
+        margin: 5% auto 0 0;
+    }
+
+    .overlay .nutritional-menu-content .nutritional-menu .menu-content{
+        width: 90%;
+    }
+
+    .overlay .nutritional-menu-content .nutritional-menu .menu-content .menu-head{
+        text-align: center;
+    }
+
+    .overlay .nutritional-menu-content .nutritional-menu .menu-content .menu-head h2{
+        font-size: 10.5vw;
+        margin-bottom: 0px;
+        margin-top: 0px;
+    }
+
+    .overlay .nutritional-menu-content .nutritional-menu .menu-content .menu-head h3{
+        font-size: 4.5vw;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .overlay .nutritional-menu-content .nutritional-menu .menu-content #nutritional-accordion{
+        width: 85%;
+        margin: 5% auto 0 0;
+        -webkit-padding-start: 0px;
+    }
+
+    .overlay .nutritional-menu-content .nutritional-menu .menu-content #nutritional-accordion .sub-menu a{
+        font-size: 4.5vw;
+    }
+
+    .overlay .nutritional-menu-content .nutritional-menu .menu-content #nutritional-accordion .sub-menu ul li > a{
+        font-size: 4vw;
+    }
+
+    #overlay-menu-lado-b-mb .main-menu-content .main-menu .link-lado-b span{
+        padding: 2px 20px;
+    }
+}
+
+@media (max-width: 360px) {
+  .overlay .nutritional-menu-content .nutritional-menu .menu-content #nutritional-accordion .sub-menu a{
+      font-size: 5.5vw;
+  }
+}
+
+@media (max-width: 320px) {
+  .overlay .nutritional-menu-content .nutritional-menu .menu-content #nutritional-accordion .sub-menu a{
+      font-size: 5.5vw;
+  }
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+
+}

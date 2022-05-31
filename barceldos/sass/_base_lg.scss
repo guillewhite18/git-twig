@@ -1,0 +1,256 @@
+@media (min-width: 1680px){
+	.container{
+		width: 80%;
+	}
+
+	.navbar-lado-b{		
+		.navbar-brand{
+			margin-left: 150px !important;	
+		}
+
+		.region-navigation{
+			width: 40%;
+
+			input{
+				width: 40%;
+			}
+
+			.autocomplete-items{
+				top: 90%;
+				width: 36%;
+			}
+		}
+
+		#navbar-lado-b{
+			width: 40%;
+
+			.nav-lado-b{
+				li{
+					.link-menu{
+						font-size: 20px;
+					}
+
+					.link-lado-b{
+						font-size: 20px;
+					}
+
+					.link-btn{
+						font-size: 20px;
+					}
+				}
+			}
+		}
+	}
+
+	.note-content {
+	    padding: 55px 35px;
+	}
+
+	.page-el-lado-b{
+		.scroll-page{
+			top: 40vw;
+			width: 0.7vw;			
+		}
+
+		#block-system-main{
+			.o-sliderContainer{
+				.o-slider{
+					.o-slider--item{
+						.o-slider-textWrap{
+							.o-slider-title{
+								font-size: 1.8vw;
+							}
+
+							.o-slider-paragraph{
+								font-size: 0.8vw;
+							}
+						}
+					}
+				}
+			}
+
+			#lado-note-section{				 
+				.note-container{					
+					.note-categorie{
+						width: 3vw;
+
+						&.pop{
+							width: 5vw;
+						}
+					}
+
+					.note-title{
+						line-height: 40px;
+					}
+				}
+			}
+
+			#mas-lado-section{
+				.mas-lado-container{
+					.note-card-body{
+						.note-card-title{
+							line-height: 35px;
+						}
+
+						.note-card-text{
+							line-height: 29px;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.page-categories{
+		.block-views{
+			#categorie-note-section{
+				.categorie-note-container{
+					.categorie-note-title{
+						line-height: 40px;
+					}
+				}
+			}
+		}
+
+		#block-system-main{
+			#categorie-notes-section{
+				.categorie-container{
+					.note-card-body{
+						.note-card-title{
+							line-height: 35px;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.views-productos{
+		#products-section{
+			.products-container{
+				.arrow-down{
+					top: 45vw;
+					width: 35px;
+				}
+
+				.list-slugs-product{
+					li{
+						line-height: 48px;
+					}
+				}
+			}
+		}
+	}
+
+	.node-type-lado-b{
+		.shares-links-list{
+			.share-item{
+				a{
+					.ico-share{
+						width: 50px;
+						height: 50px;
+					}
+				}
+			}
+		}
+
+		#block-system-main{
+			#node-content-section{
+				.node-container{
+					width: 60vw;
+
+					.note-categorie{
+						width: 3vw;
+
+						&.pop{
+							width: 5vw;							
+						}
+					}
+				}
+			}
+
+			#node-carousel-section{
+				.node-carousel-container{
+					.note-card-body{
+						.note-card-title{
+							line-height: 35px;
+						}
+
+						.note-card-categorie{
+							width: 3vw;
+
+							&.pop{
+								width: 5vw;							
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.page-lado-b{
+		#block-system-main{
+			#lado-video-section{
+				.lado-video-container{
+					margin: 6% auto;
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: 1920px){
+	.navbar-lado-b{		
+		.navbar-brand{
+			margin-left: 150px !important;	
+		}
+
+		.region-navigation{
+			width: 45%;
+
+			input{
+				width: 40%;
+			}
+
+			.autocomplete-items{
+				top: 90%;
+				width: 36%;
+			}
+		}
+
+		#navbar-lado-b{
+			width: 35%;
+
+			.nav-lado-b{
+				li{
+					.link-menu{
+						font-size: 20px;
+					}
+
+					.link-lado-b{
+						font-size: 20px;
+					}
+
+					.link-btn{
+						font-size: 20px;
+					}
+				}
+			}
+		}
+	}
+
+	.page-el-lado-b .scroll-page {
+	    top: 37vw;
+	}
+
+	.page-la-promo-barcel{
+		#home-section{
+			.banner-home-container{
+				.promo-bkg{
+					    margin: 1% 11%;
+				}
+			}
+		}
+	}
+}
